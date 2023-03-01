@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <!--
+            This is the main page of the website
+            @author Jagraj Kaur
+            @date 30 Nov'2022
+        -->
+        <title>Fashion Paradise</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="./css/typography.css">
+        <link rel="stylesheet" href="./css/nav.css">
+        <link rel="stylesheet" href="./css/theme.css">
+        <link rel="stylesheet" href="./css/feature-section.css">
+        <link rel="stylesheet" href="./css/category-section.css">
+        <link rel="stylesheet" href="./css/trending-section.css">
+        <link rel="stylesheet" href="./css/footer.css">
+    </head>
+
+    <body>
+        <header>
+            <nav>  
+                <!-- START :: LOGO SECTION -->
+                <div>
+                    <a href="#"><img src="./images/logo.png" class="logo-img" alt="Fashion Paradise"></a>
+                </div>
+                <!-- END :: LOGO SECTION -->
+
+                 <!-- START :: MENU OPTIONS -->
+                <div class="menu-label">
+                    <a href="#" class="label"> Home </a>
+                    <a href="#category" class="label"> Categories </a>
+                    <a href="#trending" class="label"> Trending </a>
+                </div>
+                <!-- END :: MENU OPTIONS -->
+
+                <!-- START :: ACTION BUTTONS -->
+                <div>
+                    <a href="#contact"><button class="btn btn-text">Contact</button></a>
+                    <button class="btn btn-outlined">Log in</button>
+                </div>
+                <!-- END :: MENU OPTIONS -->
+            </nav>
+        </header>
+
+        <!-- START :: TOP SECTION -->
+        <section class="feature-section">
+            <!-- COL 1 -->
+            <div class="tag-line-container col-5">
+
+                <div>
+                    <h5 class="headline text-white text-bold">
+                        The center of women<br />trending clothes<br />in the world.
+                    </h5>
+                    <p class="subhead-2 text-white">Updated, latest and competitive prices</p>
+                </div>
+                <button class="btn btn-primary">Buy Now</button>
+                <div class="next-button-group">
+                    <button class="btn btn-icon">
+                        <span class="material-symbols-rounded">
+                            chevron_left
+                        </span>
+                    </button>
+                    <button class="btn btn-icon">
+                        <span class="material-symbols-rounded">
+                            chevron_right
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <!-- COL 2 -->
+            <div class="col-3">
+                <img src="./images/models/main-model.png" class="main-model-image" alt="Main model">
+            </div>
+            <!-- COL 3 -->
+            <div class="filter-container col-4">
+                <p class="body-2">Choose color</p>
+                <div class="d-flex">
+                    <div class="select-color bg-white"></div>
+                    <div class="select-color selected-color bg-orange"></div>
+                    <div class="select-color bg-pink"></div>
+                    <div class="select-color bg-rose"></div>
+                </div>
+                <div class="actions-on-cart pt-2em d-flex">
+                    <div class="pr-1em">
+                        <button class="btn btn-primary" style="height: 100%">Add to cart</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-icon filled-on-hover">
+                            <span class="material-symbols-rounded color-pink">
+                                favorite
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <p class="body-2" style="padding-top: 3em;">More on this</p>
+                <div class="small-option-cards-container">
+                    <div class="pr-1em">
+                        <div class="filter-card-list" 
+                            style="background-image: url('./images/models/001.png');"
+                        >
+                        </div>
+                    </div>
+                    <div class="pr-1em">
+                        <div class="filter-card-list" 
+                            style="background-image: url('./images/models/002.png');"
+                        >
+                        </div>
+                    </div>
+                    <div class="pr-1em">
+                        <div class="filter-card-list" 
+                            style="background-image: url('./images/models/003.png');"
+                        >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END :: TOP SECTION -->
+
+        <!-- START :: CATEGORY SECTION -->
+        <section id="category" class="category-section">
+            <div class="row">
+                <div class="col-12">
+                    <h6 class="display-1">Category</h6>
+                </div>
+            </div>
+
+            <div class="category-options-list d-flex">
+                <div class="d-flex-col">
+                    <img class="options-img" src="./images/category/t-shirt.png" alt="ALL">
+                    <p class="caption text-center options-text selected">All</p>
+                </div>
+
+                <div class="d-flex-col">
+                    <img class="options-img" src="./images/category/crop-top.png" alt="Tops">
+                    <p class="caption text-center options-text">Tops</p>
+                </div>
+
+                <div class="d-flex-col">
+                    <img class="options-img" src="./images/category/woman-clothes.png" alt="Dress">
+                    <p class="caption text-center options-text">Dress</p>
+                </div>
+
+                <div class="d-flex-col">
+                    <img class="options-img" src="./images/category/suit.png" alt="Formal">
+                    <p class="caption text-center options-text">Formals</p>
+                </div>
+
+                <div class="d-flex-col">
+                    <img class="options-img" src="./images/category/sport-wear.png" alt="Sports">
+                    <p class="caption text-center options-text">Sports</p>
+                </div>
+
+                <div class="d-flex-col">
+                    <img class="options-img" src="./images/category/cap.png" alt="Hat">
+                    <p class="caption text-center options-text">Hat</p>
+                </div>
+            </div>
+
+            <div class="products-gallery">
+                <div class="product-container">
+                    <img class="product-image" src="./images/products/green-frock.webp" alt="Green Frock">
+                    <div class="product-details">
+                        <div class="pt-1em pl-1em">
+                            <p class="subhead-2">Green Frock</p>
+                            <p class="d-flex align-item-center label">
+                                <span class="material-symbols-rounded">
+                                    star_half
+                                </span>
+                                <span>
+                                    4.6
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="pl-1em pb-1em">
+                            <p class="label">
+                                <span class="text-strike-light">$15</span>
+                                <span>$12</span>
+                            </p>
+                            <div class="d-flex">
+                                <button class="scale-down-half btn btn-primary">Buy Now</button>
+                                <button class="scale-down-half btn btn-icon filled-on-hover">
+                                    <span class="material-symbols-rounded color-pink">
+                                        favorite
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-container">
+                    <img class="product-image" src="./images/products/red-dress.jpg" alt="Red Dress">
+                    <div class="product-details">
+                        <div class="pt-1em pl-1em">
+                            <p class="subhead-2">Red Dress</p>
+                            <p class="d-flex align-item-center label">
+                                <span class="material-symbols-rounded">
+                                    star_half
+                                </span>
+                                <span>
+                                    4.6
+                                </span>
+                            </p>
+                        </div>
+                        <div class="pl-1em pb-1em">
+                            <p class="label">
+                                <span>$15</span>
+                            </p>
+                            <div class="d-flex">
+                                <button class="scale-down-half btn btn-primary">Buy now</button>
+                                <button class="scale-down-half btn btn-icon filled-on-hover">
+                                    <span class="material-symbols-rounded color-pink ">
+                                        favorite
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-container">
+                    <img class="product-image" src="./images/products/black-dress.jpg" alt="Black Frock">
+                    <div class="product-details">
+                        <div class="pt-1em pl-1em">
+                            <p class="subhead-2">Black Frock</p>
+                            <p class="d-flex align-item-center label">
+                                <span class="material-symbols-rounded">
+                                    star_half
+                                </span>
+                                <span>
+                                    4.6
+                                </span>
+                            </p>
+                        </div>
+                        <div class="pl-1em pb-1em">
+                            <p class="label">
+                                <span class="text-strike-light">$12</span>
+                                <span>$10</span>
+                            </p>
+                            <div class="d-flex">
+                                <button class="scale-down-half btn btn-primary">Buy now</button>
+                                <button class="scale-down-half btn btn-icon filled-on-hover">
+                                    <span class="material-symbols-rounded color-pink ">
+                                        favorite
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-container">
+                    <img class="product-image" src="./images/products/check-dress.jpg" alt="Check dress">
+                    <div class="product-details">
+                        <div class="pt-1em pl-1em">
+                            <p class="subhead-2">Check Print Dress</p>
+                            <p class="d-flex align-item-center label">
+                                <span class="material-symbols-rounded">
+                                    star_half
+                                </span>
+                                <span>
+                                    4.6
+                                </span>
+                            </p>
+                        </div>
+                        <div class="pl-1em pb-1em">
+                            <p class="label">
+                                <span class="text-strike-light">$14</span>
+                                <span>$12</span>
+                            </p>
+                            <div class="d-flex">
+                                <button class="scale-down-half btn btn-primary">Buy now</button>
+                                <button class="scale-down-half btn btn-icon filled-on-hover">
+                                    <span class="material-symbols-rounded color-pink ">
+                                        favorite
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                    Next ROW
+                -->
+
+                <div class="product-container">
+                    <img class="product-image" src="./images/products/formal-dress.jpg" alt="Formal Dress">
+                    <div class="product-details">
+                        <div class="pt-1em pl-1em">
+                            <p class="subhead-2">Formal Dress</p>
+                            <p class="d-flex align-item-center label">
+                                <span class="material-symbols-rounded">
+                                    star_half
+                                </span>
+                                <span>
+                                    4.6
+                                </span>
+                            </p>
+                        </div>
+                        <div class="pl-1em pb-1em">
+                            <p class="label">
+                                <span class="text-strike-light">$20</span>
+                                <span>$16</span>
+                            </p>
+                            <div class="d-flex">
+                                <button class="scale-down-half btn btn-primary">Buy now</button>
+                                <button class="scale-down-half btn btn-icon filled-on-hover">
+                                    <span class="material-symbols-rounded color-pink ">
+                                        favorite
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-container">
+                    <img class="product-image"
+                        src="./images/products/white-dress.png" alt="White Dress">
+                    <div class="product-details">
+                        <div class="pt-1em pl-1em">
+                            <p class="subhead-2">White Long Dress</p>
+                            <p class="d-flex align-item-center label">
+                                <span class="material-symbols-rounded">
+                                    star_half
+                                </span>
+                                <span>
+                                    4.6
+                                </span>
+                            </p>
+                        </div>
+                        <div class="pl-1em pb-1em">
+                            <p class="label">
+                                <span>$10</span>
+                            </p>
+                            <div class="d-flex">
+                                <button class="scale-down-half btn btn-primary">Buy now</button>
+                                <button class="scale-down-half btn btn-icon filled-on-hover">
+                                    <span class="material-symbols-rounded color-pink ">
+                                        favorite
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-container">
+                    <img class="product-image" src="./images/products/black-dress.webp" alt="Black Dress">
+                    <div class="product-details">
+                        <div class="pt-1em pl-1em">
+                            <p class="subhead-2">Black Dress</p>
+                            <p class="d-flex align-item-center label">
+                                <span class="material-symbols-rounded">
+                                    star_half
+                                </span>
+                                <span>
+                                    4.6
+                                </span>
+                            </p>
+                        </div>
+                        <div class="pl-1em pb-1em">
+                            <p class="label">
+                                <span class="text-strike-light">$15</span>
+                                <span>$12</span>
+                            </p>
+                            <div class="d-flex">
+                                <button class="scale-down-half btn btn-primary">Buy now</button>
+                                <button class="scale-down-half btn btn-icon filled-on-hover">
+                                    <span class="material-symbols-rounded color-pink ">
+                                        favorite
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-container">
+                    <img class="product-image"
+                        src="./images/products/purple-dress.png" alt="Purple Dress">
+                    <div class="product-details">
+                        <div class="pt-1em pl-1em">
+                            <p class="subhead-2">Purple Dress</p>
+                            <p class="d-flex align-item-center label">
+                                <span class="material-symbols-rounded">
+                                    star_half
+                                </span>
+                                <span>
+                                    4.6
+                                </span>
+                            </p>
+                        </div>
+                        <div class="pl-1em pb-1em">
+                            <p class="label">
+                                <span class="text-strike-light">$20</span>
+                                <span>$15</span>
+                            </p>
+                            <div class="d-flex">
+                                <button class="scale-down-half btn btn-primary">Buy now</button>
+                                <button class="scale-down-half btn btn-icon filled-on-hover">
+                                    <span class="material-symbols-rounded color-pink ">
+                                        favorite
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
+                <!-- END -->
+            </div>
+
+            <div class="d-flex " style="justify-content: space-between; padding-left: 2em; padding-right: 2em;padding-top: 2em;">
+                <div class="d-flex align-item-center">
+                    <button class="btn btn-pager label btn-pager-active">
+                        01
+                    </button>
+                    <button class="btn btn-pager label">
+                        02
+                    </button>
+                    <button class="btn btn-pager label">
+                        03
+                    </button>
+                    <button class="btn btn-pager label">
+                        04
+                    </button>
+                    <button class="btn btn-pager label">
+                        05
+                    </button>
+                    <button class="btn btn-pager label">
+                        06
+                    </button>
+                </div>
+
+                <button class="scale-down-half btn btn-primary filled-on-hover">
+                    All products
+                </button>
+                
+            </div>
+
+        </section>
+        <!-- END :: CATEGORY SECTION -->
+
+        <!-- START :: Trending this month -->
+        <section id="trending" class="trending-section">
+            <h4 class="display-1">Trending This Month</h4>
+            <div class="trend-cards">
+                
+                <!-- CARD START -->
+                <div class="trend-card-outlined">
+                    <div class="card-body">
+                        <div>
+                            <p class="subhead-2">Carbon Blue - Formal</p>
+                            <p class="caption">Women elegent business suit set with long sleeve</p>
+                        </div>
+                
+                        <div class="quick-filters">
+                            <div>
+                                <p class="caption" style="line-height:0;">Price:</p>
+                                <p class="text-sm" style="line-height:19px;">$115.00</p>
+                            </div>
+                
+                            <div>
+                                <p class="caption pl-1em" style="line-height:0;">Color:</p>
+                                <div class="d-flex" style="transform: scale(0.6);">
+                                    <div class="select-color selected-color bg-black"></div>
+                                    <div class="select-color  bg-orange"></div>
+                                    <div class="select-color bg-pink"></div>
+                                    <div class="select-color bg-rose"></div>
+                                </div>
+                            </div>
+                
+                            <div>
+                                <p class="caption" style="line-height:0;">Size:</p>
+                                <div class="d-flex size-options">
+                                    <span>S</span>
+                                    <span>M</span>
+                                    <span>L</span>
+                                    <span>XL</span>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div>
+                            <div class="d-flex">
+                                <button class="scale-down-half btn btn-primary">Buy now</button>
+                                <button class="scale-down-half btn btn-icon filled-on-hover">
+                                    <span class="material-symbols-rounded color-pink ">
+                                        favorite
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-image">
+                        <img src="./images/models/004.jpg" alt="prod-1">
+                    </div>
+                </div>
+                <!-- CARD END -->
+
+                <!-- CARD START -->
+                <div class="trend-card-outlined">
+                    <div class="card-body">
+                        <div>
+                            <p class="subhead-2">Carbon Black - Formal</p>
+                            <p class="caption">Women's round neck formal black dress.</p>
+                        </div>
+                
+                        <div class="quick-filters">
+                            <div>
+                                <p class="caption" style="line-height:0;">Price:</p>
+                                <p class="text-sm" style="line-height:19px;">$115.00</p>
+                            </div>
+                
+                            <div>
+                                <p class="caption pl-1em" style="line-height:0;">Color:</p>
+                                <div class="d-flex" style="transform: scale(0.6);">
+                                    <div class="select-color selected-color bg-black"></div>
+                                    <div class="select-color  bg-orange"></div>
+                                    <div class="select-color bg-pink"></div>
+                                    <div class="select-color bg-rose"></div>
+                                </div>
+                            </div>
+                
+                            <div>
+                                <p class="caption" style="line-height:0;">Size:</p>
+                                <div class="d-flex size-options">
+                                    <span>S</span>
+                                    <span>M</span>
+                                    <span>L</span>
+                                    <span>XL</span>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div>
+                            <div class="d-flex">
+                                <button class="scale-down-half btn btn-primary">Buy now</button>
+                                <button class="scale-down-half btn btn-icon filled-on-hover">
+                                    <span class="material-symbols-rounded color-pink ">
+                                        favorite
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-image">
+                        <img src="./images/models/005.jpg" alt="prod-1">
+                    </div>
+                </div>
+                <!-- CARD END -->
+                
+            </div>
+        </section>
+        <!-- END :: Trending this month -->
+
+        <!-- Brands  || START -->
+        <section class="supported-brands">
+            <div class="d-flex brands">
+                <img src="./images/brands/ck.png" alt="brand" >
+                <img src="./images/brands/dg_logo_compact.png" alt="brand">
+                <img src="./images/brands/gucci.png" alt="brand">
+                <img src="./images/brands/EA7_White.png" alt="brand">
+                <img src="./images/brands/dior.png" alt="brand">
+            </div>
+        </section>
+
+        <footer>
+            <div class="d-flex">
+                <div class="col-6">
+                    <div class="footer-content">
+                        <h3>Fashion Paradise</h3>
+                        <p>We follow fashion trends and adapt them to the needs of our clients. 
+                            This is exactly what our clients appreciate and why they gladly come back to us. 
+                            Visit us and see why we are considered the place where fashion dreams come true.
+                        </p>
+                        <ul class="socials">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6" id="contact">
+                        <h3>Contact us</h3>
+                        <form action="#">
+                            <div class="d-flex">
+                                <div class="col-2 mt-1em"><label for="fname">Full Name:</label></div>
+                                <div class="col-10"><input type="text" id="fname" name="fullname" placeholder="Your name.."></div>
+                            </div>
+                             
+                            <div class="d-flex">
+                                <div class="col-2 mt-1em"><label for="country">Country:</label></div>
+                                <div class="col-10">
+                                    <select id="country" name="country" style="width: 64%;">
+                                        <option value="canada">Canada</option>
+                                        <option value="australia">Australia</option>
+                                        <option value="usa">USA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex">
+                                <div class="col-2 mt-1em"><label for="subject">Subject: </label></div>
+                                <div class="col-10"><textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea></div>
+                            </div>
+
+                            <div class="d-flex">
+                                <div class="col-2 mt-1em"></div>
+                                <div class="col-10"><button class="btn btn-primary">Submit</button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>copyright &copy;2022 <a href="#">fashion paradise</a></p>
+                <div class="footer-menu">
+                    <ul class="f-menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#category">Category</a></li>
+                        <li><a href="#trending">Trending</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

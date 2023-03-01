@@ -1,0 +1,43 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5em 2em 0.5em 2em;
+    background-color: var(--card-background);
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+nav div {
+    color: #fff;
+}
+
+nav div a {
+    color: #fff !important;
+    text-decoration: none;
+    padding: 0px 0.5em, 0px, 0.5em;
+    font-size: 12px;
+    transition: 0.8s ease;
+}
+
+nav div a:hover {
+    text-decoration: underline;
+}
+
+/* nav div .logo-text {
+    font-family: 'Pacifico', cursive;
+} */
+
+.logo-img {
+    height: 62px;
+    width: 62px;
+}
+
+nav .menu-label {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+}

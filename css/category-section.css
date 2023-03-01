@@ -1,0 +1,109 @@
+.category-section{
+    padding-top: 10em;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    padding-bottom: 10rem;
+}
+
+.category-options-list{
+    justify-content: start;
+}
+
+.category-options-list .d-flex-col{
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.category-options-list .d-flex-col:hover .options-text{
+    color: var(--accent-color) !important;
+}
+
+.category-options-list .d-flex-col .selected{
+    text-decoration: underline;
+}
+
+.options-img{
+    height: 3rem;
+    width: 3rem;
+}
+
+.options-text{
+    padding-top: 5px;
+    transition: 0.6s ease;
+}
+
+.products-gallery{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+}
+
+.product-container{
+    height: 280px;
+    width: 210px;
+    border-radius: 15px;
+    cursor: pointer;
+    background-image: linear-gradient(#fff,var(--primary-color));
+    position: relative;
+    margin-top:2em;
+}
+
+.product-image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    border-radius: 15px;
+}
+
+.product-details {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.product-container:hover .product-image {
+    opacity: 0.3;
+}
+
+.product-container:hover .product-details {
+    opacity: 1;
+}
+
+@media only screen and (min-width: 1200px) {
+    .category-section{
+        padding-top: 10em;
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
+
+    .category-options-list .d-flex-col {
+        margin: 2em 8em 2em 0em;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .category-section{
+        padding-top: 5em;
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .category-options-list .d-flex-col {
+        margin: 2em 14em 2em 0em;
+    }
+}
