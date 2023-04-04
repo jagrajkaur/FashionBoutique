@@ -3,62 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <title>Registration Form</title>
-  <link rel="stylesheet" href="registration.css">
+  <link rel="stylesheet" href="registration1.css">
 </head>
 <body>
   <form id="registrationForm">
     <h1>Registration Form</h1>
-    <label for="email">Email Address:</label>
-    <input type="email" id="email" name="email" required>
-    <div class="error" id="emailError"></div>
-
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <div class="error" id="passwordError"></div>
-
-    <label for="rePassword">Re-enter Password:</label>
-    <input type="password" id="rePassword" name="rePassword" required>
-    <div class="error" id="rePasswordError"></div>
-
-    <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" required>
-    <div class="error" id="firstNameError"></div>
-
-    <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="lastName" required>
-    <div class="error" id="lastNameError"></div>
-
-    <label for="dob">Date of Birth:</label>
-    <input type="date" id="dob" name="dob" required>
-    <div class="error" id="dobError"></div>
-
-    <label for="gender">Gender:</label>
-    <select id="gender" name="gender" required>
-      <option value="" disabled selected>Select Gender</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-      <option value="other">Other</option>
-    </select>
-    <div class="error" id="genderError"></div>
-
-    <label for="address">Street and City Address:</label>
-    <input type="text" id="address" name="address" required>
-    <div class="error" id="addressError"></div>
-
-    <label for="province">Province/Territory:</label>
-    <input type="text" id="province" name="province" required>
-    <div class="error" id="provinceError"></div>
-
-    <label for="postalCode">Postal Code:</label>
-    <input type="text" id="postalCode" name="postalCode" required>
-    <div class="error" id="postalCodeError"></div>
-
-    <label for="newsletter">Newsletter Subscription:</label>
-    <input type="checkbox" id="newsletter" name="newsletter">
-    <br>
-
-    <input type="submit" value="Register">
-  </form>
-  <script src="registration.js"></script>
-</body>
-</html>
+    <hr>
+    <table class="form-table">
+      <tr>
+        <td colspan="2"><label for="email">Email Address:</label></td>
+        <td><input type="email" id="email" name="email" required></td>
+        <td><div class="error" id="emailError"></div></td>
+      </tr>
+    
+      <tr>
+        <td colspan="2"><label for="password">Password:</label></td>
+        <td><input type="password" id="password" name="password" required></td>
+        <td><div class="error" id="passwordError"></div></td>
+      </tr>
+    
+      <tr>
+        <td colspan="2"><label for="rePassword">Re-enter Password:</label></td>
+        <td><input type="password" id="rePassword" name="rePassword" required></td>
+        <td><div class="error" id="rePasswordError"></div></td>
+      </tr>
+    
+      <tr>
+        <td colspan="2"><label for="firstName">First Name:</label></td>
+        <td><input type="text" id="firstName" name="firstName" required></td>
+        <td><div class="error" id="firstNameError"></div></td>
+      </tr>
+    
+      <tr>
+        <td colspan="2"><label for="lastName">Last Name:</label></td>
+        <td><input type="text" id="lastName" name="lastName" required></td>
+        <td><div class="error" id="lastNameError"></div></td>
+      </tr>
+    
+      <tr>
+        <td colspan="2"><label for="dob">Date of Birth:</label></td>
+        <td><input type="date" id="dob" name="dob" required></td>
+        <td><div class="error" id="dobError"></div></td>
+      </tr>
+    
+      <tr>
+        <td colspan="2"><label for="gender">Gender:</label></td>
+        <td>
+          <select id="gender" name="gender" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </td>
+        <td><div class="error" id="genderError"></div></td>
+      </tr>
+    
+      <tr>
+        <td colspan="2"><label for="address">Street and City Address:</label></td>
+        <td><input type="text" id="address" name="address" required></td>
+        <td><div class="error" id="addressError"></div></td>
+      </tr>
+    
+      <tr>
+        <td colspan="2"><label for="province">Province/Territory:</label></td>
+        <td><input type="text" id="province" name="province" required></td>
+        <td><div class="error" id="provinceError"></div></td>
+      </tr>
+    
+      <tr>
+        <td colspan="2"><label for="postalCode">Postal Code:</label></td>
+        <td><input type="text" id="postalCode" name="postalCode" required></td>
+        <td><div class="error" id="postalCodeError"></div></td>
+      </tr>
+        
+      <tr>
+        <td colspan="2"><label for="newsletter">Newsletter Subscription:</label></td>
+        <td><input type="checkbox" id="newsletter" name="newsletter"></td>
+        <td><div class="error" id="newsletterError"></div></td>
+      </tr>  
+    
+      <tr>
+        <td colspan="2"></td>
+        <td></td>
+        <td><div class="error" id="formError"></div></td>
+      </tr>
+      
+      <tr>
+        <td colspan="4">
+          <div class="form-row">
+            <input type="submit" value="Register">
+          </div>
+        </td>
+      </tr>
+    </table>  
+    
+    </form>
+    <script src="registration.js"></script>
+  </body>
+</html>    
