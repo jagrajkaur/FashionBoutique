@@ -10,6 +10,8 @@ if (document.readyState == 'loading') {
 
 function ready() {
 
+    addItemToCart();
+
     var removeItems = document.getElementsByClassName('remove-items');
     console.log("Hello remove", removeItems);
 
@@ -72,7 +74,53 @@ function ready() {
         });
 
     }
+
+    var buyNowButtons = document.getElementsByClassName('btn-add-to-cart');
+    for (var i = 0; i < buyNowButtons.length; i++) {
+        var singleBtn = buyNowButtons[i];
+        singleBtn.addEventListener('click', addToCartClicked);
+    }
+
+    //addItemToCart();
 }
+
+var itemList = [];
+if(localStorage.getItem('itemList')){
+    itemList = JSON.parse(localStorage.getItem('itemList'));
+}
+
+function addToCartClicked(event){
+    var button = event.target;
+    var shopItem = button.parentElement.parentElement.parentElement;
+    var title = shopItem.getElementsByClassName('subhead-2')[0].innerText;
+    var price = shopItem.getElementsByClassName('final-price')[0].innerText;
+    var imageSrc = shopItem.parentElement.getElementsByClassName('image-icon')[0].src;
+    itemList.push({
+            title : title, 
+            price : price, 
+            imageSrc : imageSrc
+        });
+    console.log(itemList);
+    localStorage.setItem('itemList', JSON.stringify(itemList));
+    alert("Item added to cart!");
+}
+
+
+function addItemToCart(){
+    console.log('inside addItemToCart');
+    myVar = JSON.parse(localStorage.getItem('itemList'));
+    console.log('itemList : ',myVar);
+    var cartRow = document.createElement('div');
+    cartRow.innerText = 'Nikita_Kapoor';
+    console.log('cartRow : ',cartRow);
+    var cartItems = document.getElementById("cartitemsIDNK");
+    if(cartItems){
+        console.log('cartItems : ',cartItems);
+        cartItems.append(cartRow);
+    }
+}
+
+
 function updateCartTotal() {
     var cartRows = document.getElementsByClassName('item-price');
     var cartRowsQuantity = document.getElementsByClassName('item-quantity');
