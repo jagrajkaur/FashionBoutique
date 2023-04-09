@@ -6,6 +6,11 @@
             This is shopping cart of website
             @author Rajwant Kaur
             @date 21 March 2023
+
+            @ Nikita Kapoor(NK) - Added logic for adding items from index page to the cart 
+                                    - linking between pages index.html and shopping-cart-224.html
+                                - removed static content, static page content updated to dynamic, dynamic items and cost calculation
+                                - Empty Cart Logic
         -->
     <title>Fashion Paradise</title>
     <meta charset="utf-8" />
@@ -60,58 +65,12 @@
                 class="col align-self-center text-right text-muted"
                 id="#total-quantity"
               >
-                3 items
+                0 items
               </div>
             </div>
           </div>
           <div class="cart-items" id="cartitemsIDNK">
-            <div class="row border-top border-bottom" id="item">
-              <div class="row main align-items-center">
-                <div class="col-2">
-                  <img
-                    class="img-fluid"
-                    src="https://i.imgur.com/1GrakTl.jpg"
-                  />
-                </div>
-                <div class="col">
-                  <div class="row text-muted">Shirt</div>
-                  <div class="row">Cotton T-shirt</div>
-                </div>
-                <div class="col">
-                  <a href="#" class="remove-quantity">-</a
-                  ><a href="#" class="border item-quantity">3</a
-                  ><a href="#" class="add-quantity">+</a>
-                </div>
-                <div class="col">
-                  <span class="item-price">$ 44.05</span>
-                  <span class="remove-items">&#10005;</span>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="row main align-items-center">
-                <div class="col-2">
-                  <img
-                    class="img-fluid"
-                    src="https://i.imgur.com/ba3tvGm.jpg"
-                  />
-                </div>
-                <div class="col">
-                  <div class="row text-muted">Shirt</div>
-                  <div class="row">Cotton T-shirt</div>
-                </div>
-                <div class="col">
-                  <a href="#" class="remove-quantity">-</a
-                  ><a class="border item-quantity">1</a
-                  ><a href="#" class="add-quantity">+</a>
-                </div>
-                <div class="col">
-                  <span class="item-price">$ 45.05 </span
-                  ><span class="remove-items">&#10005;</span>
-                </div>
-              </div>
-            </div>
-            <div class="row border-top border-bottom">
+            <!--<div class="row border-top border-bottom">
               <div class="row main align-items-center">
                 <div class="col-2">
                   <img
@@ -121,7 +80,7 @@
                 </div>
                 <div class="col">
                   <div class="row text-muted">Shirt</div>
-                  <div class="row">Cotton T-shirt</div>
+                  <div class="row item-title">Cotton T-shirt</div>
                 </div>
                 <div class="col">
                   <a href="#" class="remove-quantity">-</a
@@ -133,7 +92,7 @@
                   <span class="remove-items">&#10005;</span>
                 </div>
               </div>
-            </div>
+            </div>-->
           </div>
           <div class="back-to-shop">
             <a href="./index.html"
@@ -154,9 +113,9 @@
               style="padding-left: 0"
               id="#total-quantity-summary"
             >
-              ITEMS 3
+              ITEMS   0
             </div>
-            <div class="col text-right" id="#total-base-price">$ 132.00</div>
+            <div class="col text-right" id="#total-base-price">$ 00.00</div>
           </div>
           <div class="row">
             <div class="col" style="padding-left: 0">Taxes Standard 13%</div>
@@ -180,7 +139,7 @@
             style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0"
           >
             <div class="col">TOTAL PRICE</div>
-            <div class="col text-right" id="#total-price">$ 137.00</div>
+            <div class="col text-right" id="#total-price">$ 00.00</div>
           </div>
           <button class="btn">CHECKOUT</button>
         </div>
