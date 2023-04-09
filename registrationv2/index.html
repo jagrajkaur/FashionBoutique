@@ -8,30 +8,51 @@
   <body>
     <h1>Registration Form</h1>
     <form id="registration-form" method="post">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+      <table class="form-table">
+        <tr>
+          <td colspan="2"><label for="email">Email:</label></td>
+          <td><input type="email" id="email" name="email" required></td>
+        </tr>
+
+        <tr>
+          <td colspan="2"><label for="password">Password:</label></td>
+          <td><input type="password" id="password" name="password" required></td>
+        </tr>
+
+        <tr>
+          <td colspan="2"><label for="confirm-password">Confirm Password:</label></td>
+          <td><input type="password" id="confirm-password" name="confirm-password" required></td>
+        </tr>
+
+        <tr>
+          <td colspan="2"><label for="style-preference">Style Preference:</label></td>
+          <td>
+            <select id="style-preference" name="style-preference">
+              <option value="">-Please choose an option-</option>
+              <option value="women">Women</option>
+              <option value="men">Men</option>
+              <option value="boys">Boys</option>
+              <option value="girls">Girls</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2"><label for="privacy-policy">I agree to the privacy and cookie policy</label></td>
+          <td><input type="checkbox" id="privacy-policy" name="privacy-policy" required></td>
+        </tr>
+
+        <tr>
+          <td colspan="2"><label for="exclusive-offers">I would like to receive exclusive offers</label></td>
+          <td><input type="checkbox" id="exclusive-offers" name="exclusive-offers"></td>
+        </tr>
+
+        
+      </table>
+
+      
       <br>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
-      <br>
-      <label for="confirm-password">Confirm Password:</label>
-      <input type="password" id="confirm-password" name="confirm-password" required>
-      <br>
-      <label for="style-preference">Style Preference:</label>
-      <select id="style-preference" name="style-preference">
-        <option value="">--Please choose an option--</option>
-        <option value="women">Women</option>
-        <option value="men">Men</option>
-        <option value="boys">Boys</option>
-        <option value="girls">Girls</option>
-      </select>
-      <br>
-      <input type="checkbox" id="privacy-policy" name="privacy-policy" required>
-      <label for="privacy-policy">I agree to the privacy and cookie policy</label>
-      <br>
-      <input type="checkbox" id="exclusive-offers" name="exclusive-offers">
-      <label for="exclusive-offers">I would like to receive exclusive offers</label>
-      <br>
+      
       <input type="submit" value="Submit">
     </form>
     <script src="script.js"></script>
