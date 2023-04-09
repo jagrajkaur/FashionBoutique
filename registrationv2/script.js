@@ -39,11 +39,11 @@ form.addEventListener('submit', function(event) {
     // Create a URL for the Blob object
     const url = URL.createObjectURL(blob);
 
-    // Create a link to allow the user to download the file
+/*     // Create a link to allow the user to download the file
     const link = document.createElement("a");
     link.download = "formData.txt";
     link.href = url;
-    link.click();
+    link.click(); */
   }
 });
 
@@ -58,12 +58,22 @@ function validateForm() {
     isValid = false;
   }
 
-  // Check if password and confirm password match
-  if (password.value !== confirmPassword.value) {
+  // Define regular expressions for password requirements
+  const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+  // Check if password meets requirements
+  if (!passwordRegex.test(password.value)) {
+    // If password does not meet requirements, show an error message and set isValid to false
+    alert('Passwords must be at least 8 characters long and contain at least one number, one special character, and one uppercase letter.');
+    isValid = false;
+  } else if (password.value !== confirmPassword.value) {
     // If passwords do not match, show an error message and set isValid to false
     alert('Passwords do not match.');
     isValid = false;
   }
+
+
+
 
   // Check if privacy policy is checked
   if (!privacyPolicy.checked) {
