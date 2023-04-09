@@ -1,29 +1,70 @@
+body {
+  background-color: var(--app-background);
+}
+
 h1 {
-    text-align: center;
-  }
-  
-  form {
-    width: 50%;
-    margin: 0 auto;
-  }
-  
-  label {
-    display: inline-block;
-    width: 150px;
-    text-align: right;
-    margin-right: 10px;
-  }
-  
-  input[type="email"], input[type="password"], select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-  
-  input[type="checkbox"] {
-    margin-right: 10px;
-  }
-  
+  color: var(--primary-color);
+}
+
+form {
+  background-color: var(--card-background);
+  padding: 40px;
+}
+
+label {
+  color: var(--text-black);
+}
+
+input[type="email"],
+input[type="password"],
+select {
+  background-color: #fff;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+  outline: none;
+  border: 2px solid var(--accent-color);
+}
+
+input[type="submit"] {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+  opacity: 0.8;
+}
+
+input[type="checkbox"] + label {
+  color: var(--text-black);
+}
+
+input[type="checkbox"]:checked + label:before {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+input[type="checkbox"]:checked + label:after {
+  content: "\f00c";
+  font-family: FontAwesome;
+  font-size: 12px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  color: #fff;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+select option {
+  color: var(--text-black);
+}
