@@ -1,137 +1,198 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
-<head>
+  <head>
     <!--
             This is shopping cart of website
             @author Rajwant Kaur
             @date 21 March 2023
+
+            @ Nikita Kapoor(NK) - Added logic for adding items from index page to the cart 
+                                    - linking between pages index.html and shopping-cart-224.html
+                                - removed static content, static page content updated to dynamic, dynamic items and cost calculation
+                                - Empty Cart Logic
         -->
     <title>Fashion Paradise</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="./css/typography.css">
-    <link rel="stylesheet" href="./css/nav.css">
-    <link rel="stylesheet" href="./css/theme.css">
-    <link rel="stylesheet" href="./css/feature-section.css">
-    <link rel="stylesheet" href="./css/category-section.css">
-    <link rel="stylesheet" href="./css/trending-section.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="./css/typography.css" />
+    <link rel="stylesheet" href="./css/nav.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/feature-section.css" />
+    <link rel="stylesheet" href="./css/category-section.css" />
+    <link rel="stylesheet" href="./css/trending-section.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    ></script>
 
-    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
-    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="./css/shopping-cart-224.css" />
+  </head>
 
-    <link rel="stylesheet" href="./css/shopping-cart-224.css">
-</head>
-
-<body className='snippet-body'>
-
+  <body className="snippet-body">
     <div class="card">
-        <div class="row">
-            <div class="col-md-8 cart">
-                <div class="title">
-                    <div class="row">
-                        <div class="col">
-                            <h4><b>Your Bucket</b></h4>
-                        </div>
-                        <div class="col align-self-center text-right text-muted" id="#total-quantity">3 items</div>
-                    </div>
+      <div id="enclosing">
+        <div class="row" id="cartSection">
+          <div class="col-md-8 cart">
+            <div class="title">
+              <div class="row">
+                <div class="col">
+                  <h4><b>Your Bucket</b></h4>
                 </div>
-                <div class="row border-top border-bottom" id="item">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
-                        <div class="col">
-                            <div class="row text-muted">Shirt</div>
-                            <div class="row">Cotton T-shirt</div>
-                        </div>
-                        <div class="col">
-                            <a href="#" class="remove-quantity">-</a><a href="#" class="border item-quantity">3</a><a
-                                href="#" class="add-quantity">+</a>
-                        </div>
-                        <div class="col"><span class="item-price">$ 44.05</span> <span
-                                class="remove-items">&#10005;</span></div>
-                    </div>
+                <div
+                  class="col align-self-center text-right text-muted"
+                  id="#total-quantity"
+                >
+                  0 items
                 </div>
-                <div class="row">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg"></div>
-                        <div class="col">
-                            <div class="row text-muted">Shirt</div>
-                            <div class="row">Cotton T-shirt</div>
-                        </div>
-                        <div class="col">
-                            <a href="#" class="remove-quantity">-</a><a class=" border item-quantity">1</a><a href="#"
-                                class="add-quantity">+</a>
-                        </div>
-                        <div class="col"><span class="item-price">$ 45.05 </span><span
-                                class="remove-items">&#10005;</span></div>
-                    </div>
-                </div>
-                <div class="row border-top border-bottom">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/pHQ3xT3.jpg"></div>
-                        <div class="col">
-                            <div class="row text-muted">Shirt</div>
-                            <div class="row">Cotton T-shirt</div>
-                        </div>
-                        <div class="col">
-                            <a href="#" class="remove-quantity">-</a><a href="#" class="border item-quantity">1</a><a
-                                href="#" class="add-quantity">+</a>
-                        </div>
-                        <div class="col"><span class="item-price">$ 46.00</span> <span
-                                class="remove-items">&#10005;</span></div>
-                    </div>
-                </div>
-                <div class="back-to-shop"><a href="./index.html">&leftarrow;<span class="text-muted"><button
-                                class="btn btn-text">Back to shop</button></span></a></div>
-
+              </div>
             </div>
-            <div class="col-md-4 summary">
-                <div>
-                    <h5><b>Summary</b></h5>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col" style="padding-left:0;" id="#total-quantity-summary">ITEMS 3</div>
-                    <div class="col text-right" id="#total-base-price">$ 132.00</div>
-                </div>
-                <div class="row">
-                    <div class="col" style="padding-left:0;" >Taxes Standard 13%</div>
-                    <div class="col text-right" id="#taxes"></div>
-                </div>
-                <form>
-                    <p>Choose Your Delivery Mode</p>
-                    <select id="shipping-mode">
-                        <option class="text-muted" value="10">Standard-Delivery- $10.00</option>
-                        <option class="text-muted" value="15">Express-Delivery- $15.00</option>
-
-                    </select>
-                    <p>Do you have any Promotional Code?</p>
-                    <input id="promoCode" placeholder="Enter your code">
-                </form>
-                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                    <div class="col">TOTAL PRICE</div>
-                    <div class="col text-right" id="#total-price">$ 137.00</div>
-                </div>
-                <button class="btn">CHECKOUT</button>
+            <div class="cart-items" id="cartitemsIDNK"></div>
+            <div class="back-to-shop">
+              <a href="./index.html"
+                >&leftarrow;<span class="text-muted"
+                  ><button class="btn btn-text">Back to shop</button></span
+                ></a
+              >
             </div>
+          </div>
+          <div class="col-md-4 summary">
+            <div>
+              <h5><b>Summary</b></h5>
+            </div>
+            <hr />
+            <div class="row">
+              <div
+                class="col"
+                style="padding-left: 0"
+                id="#total-quantity-summary"
+              >
+                ITEMS 0
+              </div>
+              <div class="col text-right" id="#total-base-price">$ 00.00</div>
+            </div>
+            <div class="row">
+              <div class="col" style="padding-left: 0">Taxes Standard 13%</div>
+              <div class="col text-right" id="#taxes"></div>
+            </div>
+            <form>
+              <p>Choose Your Delivery Mode</p>
+              <select id="shipping-mode">
+                <option class="text-muted" value="10">
+                  Standard-Delivery- $10.00
+                </option>
+                <option class="text-muted" value="15">
+                  Express-Delivery- $15.00
+                </option>
+              </select>
+              <p>Do you have any Promotional Code?</p>
+              <input id="promoCode" placeholder="Enter your code" />
+            </form>
+            <div
+              class="row"
+              style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0"
+            >
+              <div class="col">TOTAL PRICE</div>
+              <div class="col text-right" id="#total-price">$ 00.00</div>
+            </div>
+            <button class="btn" id="checkoutBtn">CHECKOUT</button>
+          </div>
         </div>
+      </div>
 
+      <div class="loginPopup" id="addressSection">
+        <div class="formPopup" id="popupForm">
+          <form action="" class="formContainer">
+            <h2>Delivery Address</h2>
+            <div class="first-field">
+              <label for="personName"> Full Name </label>
+              <input type="text" id="personName" placeholder="You name here" />
+            </div>
+            <div class="box">
+              <label for="line1"> Line 1 </label>
+              <input
+                type="text"
+                id="line1"
+                placeholder="House/ Apartment/ Unit #"
+                name="line1"
+              />
+            </div>
+            <div class="box">
+              <label for="line2"> Line 2 </label>
+              <input
+                type="text"
+                id="line2"
+                placeholder="Building/ Street"
+                name="line2"
+              />
+            </div>
+            <div class="box">
+              <label for="city"> City </label>
+              <input type="text" id="city" placeholder="City" name="city" />
+            </div>
+            <div class="box">
+              <label for="province"> Province Code </label>
+              <input
+                type="text"
+                id="province"
+                placeholder="province"
+                name="Province"
+              />
+            </div>
+            <div class="first-field">
+              <label for="country"> Country </label>
+              <input type="text" id="country" value="Canada" name="city" />
+            </div>
+
+            <div class="buttonSection">
+              <button type="button" class="bton cancel" id="addressToCart">
+                Close
+              </button>
+              <button type="button" class="bton cancel" id="resetAddress">
+                Reset
+              </button>
+              <button type="button" class="bton" id="ProceedBtn">
+                Proceed
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <script type='text/javascript'
-        src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+
+    <script
+      type="text/javascript"
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+    ></script>
 
     <!-- Here async will load script  file in background. -->
-    <script type='text/javascript' src='./js/shopping-cart-224.js' async></script>
-
-</body>
-
+    <script
+      type="text/javascript"
+      src="./js/shopping-cart-224.js"
+      async
+    ></script>
+  </body>
 </html>
