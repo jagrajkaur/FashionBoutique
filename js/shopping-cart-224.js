@@ -206,16 +206,16 @@ function addItemToCart(){
                                 </div>
                                 <div class="col">
                                     <div class="row text-muted">Shirt</div>
-                                    <div class="row item-title">${itemListInternal[i].title}</div>
+                                    <div class="row item-title text-muted">${itemListInternal[i].title}</div>
                                 </div>
                                 <div class="col">
-                                    <a href="#" class="remove-quantity">-</a
-                                    ><a href="#" class="border item-quantity">${itemListInternal[i].quantity}</a
-                                    ><a href="#" class="add-quantity">+</a>
+                                    <a href="#" class="remove-quantity text-muted">-</a
+                                    ><a href="#" class="border item-quantity text-muted">${itemListInternal[i].quantity}</a
+                                    ><a href="#" class="add-quantity text-muted">+</a>
                                 </div>
                                 <div class="col">
-                                    <span class="item-price">${itemListInternal[i].price}</span>
-                                    <span class="remove-items">&#10005;</span>
+                                    <span class="item-price text-muted">${itemListInternal[i].price}</span>
+                                    <span class="remove-items text-muted">&#10005;</span>
                                 </div>
                             </div>`;
             cartRow.innerHTML = cartRowContent;
