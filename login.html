@@ -15,36 +15,8 @@
     <link rel="stylesheet" href="css/category-section.css">
     <link rel="stylesheet" href="css/trending-section.css">
     <link rel="stylesheet" href="css/footer.css">
-    <style>
-        header {
-            background-color: #F79EA7;
-
-        }
-        body {
-            background-color: #F79EA7;
-        }
-        input[type=text], select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #fff;
-            border-radius: 10px;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            resize: vertical;
-            background-color: transparent;
-        }
-        .form-control {
-            width: 100%;
-            padding: 8px;
-            border: 2px solid #fff;
-            border-radius: 10px;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            resize: vertical;
-            background-color: transparent;    
-        }
-
-    </style>  
+    <link rel="stylesheet" href="css/login.css">    
+ 
 </head>
 <body>
     <header>
@@ -57,16 +29,15 @@
     <main class="container mt-5">
             <div class="col-6">
                 <h3>Login</h3>
-                <!-- <form action="#" action="logged.html" method="get" name="member_form" id="member_form"> -->
-                    <form action="logged.html" method="get" name="member_form" id="member_form">
+                    <form action="index.html" method="get" name="member_form" id="member_form">
                  
                     <div class="form-group">
 
-                        <label for="username">User Name:</label>
+                        <label for="username">User Name:*</label>
                         <input type="text" id="username" name="username" class="form-control" placeholder="User name" autofocus>
                     </div>
                     <div class="form-group">
-                        <label for="pass">Password:</label>
+                        <label for="pass">Password:*</label>
                         <input type="password" id="pass" name="pass" class="form-control" placeholder="Password">
                     </div>
 
@@ -82,6 +53,8 @@
                         <button type="submit" id="submit" name="submit" class="btn btn-primary">Login</button>
                     </div>
                 </form>
+                <div id="success-section"></div>
+            </div>                
         </div>
     </main>
     <footer>
@@ -135,30 +108,59 @@
     </body>
 </html>
 
-  
-  <script>
-    
+
+<script>
     const form = document.getElementById("member_form");
     form.addEventListener("submit", function(event) {
       event.preventDefault(); 
-  
+    
       const username = document.getElementById("username").value;
       const password = document.getElementById("pass").value;
-  
+    
       if (!username || !password) { // check if fields are empty
         alert("Please enter both username and password.");
         return;
       }
-  
-      // validate username and password 
-      const isValid = username.length >= 4 && password.length >= 8;
-      if (!isValid) {
-        alert("Invalid username or password.");
+    
+      // validate username length
+      const uNameLength = username.length >= 4 ;
+      if (!uNameLength) {
+        alert("Invalid username. Too short. Usernames contain at least 4 characters.");
         return;
       }
-  
-      // submit the form if entries are valid
-    //    form.submit();
-});
-  </script>
-  
+    
+      //validate password
+      const pwCheck = /^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
+      if (!pwCheck.test(password)) {
+        alert("Password must be 8-15 characters and contain at least 1 special character.");
+        return;
+      }
+    
+      //sample User
+      const loggedInUser = username;
+      const loggedInUserType = "user";
+    
+      // show success message
+      const successMsg = document.createElement("div");
+      successMsg.className = "alert alert-success mt-4";
+      successMsg.role = "alert";
+      successMsg.innerHTML = `Welcome, ${loggedInUser}!`;
+    
+      const successSection = document.getElementById("success-section");
+      successSection.innerHTML = "";
+      successSection.appendChild(successMsg);
+    
+    if (loggedInUserType === "admin") {
+  const adminPanel = document.createElement("div");
+  adminPanel.className = "show mt-3";
+  adminPanel.innerHTML = "Admin panel content";
+
+  successSection.appendChild(adminPanel);
+}
+    
+      // clear form fields
+      document.getElementById("username").value = "";
+      document.getElementById("pass").value = "";
+    });
+    </script>
+    
