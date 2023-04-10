@@ -29,7 +29,7 @@ html, body {
 }
 
 /* Set color for all h1 elements */
-h1 {
+h1, h2 {
   color: var(--primary-color);
 }
 
@@ -137,4 +137,24 @@ select option {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+/* Set background color for container */
+.privcontainer {
+  background-color: #a087c9;
+}
+
+/* Center container horizontally */
+.privcontainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Adjust container size based on browser size */
+.privcontainer {
+  width: 80%;
+  max-width: 1000px;
+  min-width: 500px;
 }
