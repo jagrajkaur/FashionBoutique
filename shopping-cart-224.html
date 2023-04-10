@@ -50,6 +50,7 @@
     ></script>
 
     <link rel="stylesheet" href="./css/shopping-cart-224.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
   </head>
 
   <body className="snippet-body">
@@ -74,7 +75,7 @@
             <div class="back-to-shop">
               <a href="./index.html"
                 >&leftarrow;<span class="text-muted"
-                  ><button class="btn btn-text">Back to shop</button></span
+                  ><button class="btn-primary btn-radius">Back to shop</button></span
                 ></a
               >
             </div>
@@ -118,7 +119,7 @@
               <div class="col">TOTAL PRICE</div>
               <div class="col text-right" id="#total-price">$ 00.00</div>
             </div>
-            <button class="btn" id="checkoutBtn">CHECKOUT</button>
+            <button class="btn-primary btn btn-radius" id="checkoutBtn">CHECKOUT</button>
           </div>
         </div>
       </div>
@@ -127,9 +128,15 @@
         <div class="formPopup" id="popupForm">
           <form action="" class="formContainer">
             <h2>Delivery Address</h2>
-            <div class="first-field">
+            <div class="box">
               <label for="personName"> Full Name </label>
               <input type="text" id="personName" placeholder="You name here" />
+              <span class="require" id="span1"> *</span>
+            </div>
+            <div class="box">
+              <label for="phone"> Phone </label>
+              <input type="tel" id="phone" placeholder="333-444-5555" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
+              <span class="require" id="span7"> *</span>
             </div>
             <div class="box">
               <label for="line1"> Line 1 </label>
@@ -139,6 +146,7 @@
                 placeholder="House/ Apartment/ Unit #"
                 name="line1"
               />
+              <span class="require" id="span2"> *</span>
             </div>
             <div class="box">
               <label for="line2"> Line 2 </label>
@@ -152,30 +160,42 @@
             <div class="box">
               <label for="city"> City </label>
               <input type="text" id="city" placeholder="City" name="city" />
+              <span class="require" id="span3"> *</span>
             </div>
             <div class="box">
               <label for="province"> Province Code </label>
               <input
                 type="text"
                 id="province"
-                placeholder="province"
+                placeholder="Province"
                 name="Province"
               />
+              <span class="require" id="span4"> *</span>
             </div>
-            <div class="first-field">
-              <label for="country"> Country </label>
-              <input type="text" id="country" value="Canada" name="city" />
+            <div class="box">
+              <label for="postalCode">Postal Code</label>
+              <input
+                type="text"
+                id="postalCode"
+                placeholder="Postal Code"
+                name="country"
+              />
+              <span class="require" id="span5"> *</span>
             </div>
 
-            <div class="buttonSection">
-              <button type="button" class="bton cancel" id="addressToCart">
-                Close
+            <div class="box">
+              <label for="country"> Country </label>
+              <input type="text" id="country" value="Canada" name="country" />
+              <span class="require" id="span6"> *</span>
+            </div>
+            
+            <div id="btnSec">
+              <span id="valMsg" class="require"></span><br/>
+              <button type="button" class="bton btn-primary btn-radius" id="resetAddress">
+                Clear
               </button>
-              <button type="button" class="bton cancel" id="resetAddress">
-                Reset
-              </button>
-              <button type="button" class="bton" id="ProceedBtn">
-                Proceed
+              <button type="button" class="bton btn-primary btn-radius" id="ProceedBtn">
+                Confirm
               </button>
             </div>
           </form>
