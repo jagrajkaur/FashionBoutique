@@ -59,7 +59,7 @@ select:focus {
   border: 2px solid var(--accent-color);
 }
 
-/* Set styles for the submit button */
+/* /* Set styles for the submit button */
 input[type="submit"] {
   background-color: var(--primary-color);
   color: #fff;
@@ -74,7 +74,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
   opacity: 0.8;
 }
-
+ */
 /* Set color for labels associated with checked checkboxes */
 input[type="checkbox"] + label {
   color: var(--text-black);
