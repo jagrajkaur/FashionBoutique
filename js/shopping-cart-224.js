@@ -1,10 +1,22 @@
 // $(function () {
 // });
 
+/*$ = function(element_id){
+    return document.getElementById(element_id);
+}*/
+
 if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
 } else {
     ready();
+}
+
+
+window.onload = function(){
+    document.getElementById('checkoutBtn') != null ? document.getElementById('checkoutBtn').onclick = openForm : "";
+    document.getElementById('addressToCart') != null ? document.getElementById('addressToCart').onclick = closeForm : "";
+    document.getElementById('resetAddress') != null ? document.getElementById('resetAddress').onclick = resetAddressForm : "";
+    
 }
 
 
@@ -258,4 +270,69 @@ function updateCartTotal() {
     var totalPrice = parseFloat(parseFloat(totalBasePrice) +parseFloat( shippingPrice )+ parseFloat(tax)).toFixed(2);
     cartTotalPrice.innerText = '$ ' + totalPrice;
 
+}
+
+var isPopUpOpen = false;
+openForm = function openForm() {
+    console.log('Hi!! Checkout btn clicked.');
+    $("#enclosing").addClass("disable-content");
+    document.getElementById("popupForm").style.opacity = 1;
+    document.getElementById("popupForm").style.display = "block";
+    document.getElementById("ProceedBtn").addEventListener('click', displayOrderSummary);
+    isPopUpOpen = true;
+}
+
+
+closeForm = function closeForm(){
+    console.log('We will close and go back to cart');
+    document.getElementById("popupForm").style.display = "none";
+    $("#enclosing").removeClass("disable-content");
+}
+
+
+$(document).mouseup(function(event) 
+{
+    var container = $("#popupForm");
+
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container.is(event.target) && container.has(event.target).length === 0) 
+    {
+        closeForm();
+    }
+});
+
+
+var address = [];
+if(localStorage.getItem('address')){
+    address = JSON.parse(localStorage.getItem('address'));
+}
+
+displayOrderSummary = function displayOrderSummary(){
+    console.log('order summary will display here : ', $("#personName"));
+    var name = document.getElementById("personName").value.trim();
+    var line1 = document.getElementById("line1").value.trim();
+    var line2 = document.getElementById("line2").value.trim();
+    var city = document.getElementById("city").value.trim();
+    var province = document.getElementById("province").value.trim();
+    var country = document.getElementById("country").value.trim();
+    console.log(name,' | ',line1);
+    address.push({
+        name : name, 
+        line1 : line1, 
+        line2 : line2,
+        city : city,
+        province : province,
+        country : country
+    });
+    console.log('address : ',address);
+    localStorage.setItem('address', JSON.stringify(address));
+}
+
+resetAddressForm = function resetAddressForm(){
+    document.getElementById("personName").value = '';
+    document.getElementById("line1").value = '';
+    document.getElementById("line2").value = '';
+    document.getElementById("city").value = '';
+    document.getElementById("province").value = '';
+    document.getElementById("country").value = 'Canada';
 }
