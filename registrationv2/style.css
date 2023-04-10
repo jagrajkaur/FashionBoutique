@@ -28,7 +28,6 @@ html, body {
   flex-direction: column;
 }
 
-
 /* Set color for all h1 elements */
 h1 {
   color: var(--primary-color);
@@ -39,8 +38,6 @@ form {
   background-color: var(--card-background);
   padding: 40px;
 }
-
-
 
 /* Set color for all label elements */
 label {
@@ -93,7 +90,7 @@ input[type="checkbox"]:checked + label:before {
 input[type="checkbox"]:checked + label:after {
   content: "\f00c";
   font-family: FontAwesome;
-  font-size: 12px;
+  font-size: 10px;
   position: absolute;
   top: 3px;
   left: 3px;
@@ -133,4 +130,11 @@ select option {
 /* Set styles for focused input elements */
 .form-row input:focus {
   border-color: blue
+}
+/*center the container both vertically and horizontally, and make it take up the full height of the viewport*/
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
