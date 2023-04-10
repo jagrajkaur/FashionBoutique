@@ -1,10 +1,22 @@
 // $(function () {
 // });
 
+/*$ = function(element_id){
+    return document.getElementById(element_id);
+}*/
+
 if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
 } else {
     ready();
+}
+
+
+window.onload = function(){
+    document.getElementById('checkoutBtn') != null ? document.getElementById('checkoutBtn').onclick = openForm : "";
+    document.getElementById('addressToCart') != null ? document.getElementById('addressToCart').onclick = closeForm : "";
+    document.getElementById('resetAddress') != null ? document.getElementById('resetAddress').onclick = resetAddressForm : "";
+    
 }
 
 
@@ -194,16 +206,16 @@ function addItemToCart(){
                                 </div>
                                 <div class="col">
                                     <div class="row text-muted">Shirt</div>
-                                    <div class="row item-title">${itemListInternal[i].title}</div>
+                                    <div class="row item-title text-muted">${itemListInternal[i].title}</div>
                                 </div>
                                 <div class="col">
-                                    <a href="#" class="remove-quantity">-</a
-                                    ><a href="#" class="border item-quantity">${itemListInternal[i].quantity}</a
-                                    ><a href="#" class="add-quantity">+</a>
+                                    <a href="#" class="remove-quantity text-muted">-</a
+                                    ><a href="#" class="border item-quantity text-muted">${itemListInternal[i].quantity}</a
+                                    ><a href="#" class="add-quantity text-muted">+</a>
                                 </div>
                                 <div class="col">
-                                    <span class="item-price">${itemListInternal[i].price}</span>
-                                    <span class="remove-items">&#10005;</span>
+                                    <span class="item-price text-muted">${itemListInternal[i].price}</span>
+                                    <span class="remove-items text-muted">&#10005;</span>
                                 </div>
                             </div>`;
             cartRow.innerHTML = cartRowContent;
@@ -258,4 +270,167 @@ function updateCartTotal() {
     var totalPrice = parseFloat(parseFloat(totalBasePrice) +parseFloat( shippingPrice )+ parseFloat(tax)).toFixed(2);
     cartTotalPrice.innerText = '$ ' + totalPrice;
 
+}
+
+
+/**  @ Nikita Kapoor
+ * openForm() opens the window to enter delivery address when checkout is clicked
+ * calls displayOrderSummary() when user clicks on proceed button on address window
+ */
+openForm = function openForm() {
+    $("#enclosing").addClass("disable-content");
+    document.getElementById("popupForm").style.opacity = 1;
+    document.getElementById("popupForm").style.display = "block";
+    document.getElementById("ProceedBtn").addEventListener('click', displayOrderSummary);
+}
+
+
+closeForm = function closeForm(){
+    console.log('We will close and go back to cart');
+    document.getElementById("popupForm").style.display = "none";
+    $("#enclosing").removeClass("disable-content");
+}
+
+
+/** @ Nikita Kapoor
+ * closes delivery address window when clicked outside */
+$(document).mouseup(function(event) 
+{
+    var container = $("#popupForm");
+    if (!container.is(event.target) && container.has(event.target).length === 0) 
+    {
+        closeForm();
+    }
+});
+
+
+//NK - global variable to store and fetch delivery addres to/from localstorage
+var address = [];
+if(localStorage.getItem('address')){
+    address = JSON.parse(localStorage.getItem('address'));
+}
+
+
+/**  @ Nikita Kapoor
+ * validate the address entered and store in local storage
+ * call fieldRequiredValidation() to perform actal validations on input fields*/
+displayOrderSummary = function displayOrderSummary(){
+    console.log('order summary will display here : ', $("#personName"));
+    var name = document.getElementById("personName").value.trim();
+    var line1 = document.getElementById("line1").value.trim();
+    var line2 = document.getElementById("line2").value.trim();
+    var city = document.getElementById("city").value.trim();
+    var province = document.getElementById("province").value.trim();
+    var postalCode = document.getElementById("postalCode").value.trim();
+    var country = document.getElementById("country").value.trim();
+    var phone = document.getElementById("phone").value.trim();
+    console.log(name,' | ',line1);
+    var allValid = fieldRequiredValidation(name, line1, city, province, postalCode, country, phone);
+    console.log('allValid : '+allValid);
+    if(allValid == true){
+        address = {
+            name : name, 
+            line1 : line1, 
+            line2 : line2,
+            city : city,
+            province : province,
+            postalCode : postalCode,
+            country : country
+        };
+        console.log('address : ',address);
+        localStorage.setItem('address', JSON.stringify(address));
+    }
+    else{
+       console.log('Some validation failed. Check with Admin');
+    }
+}
+
+
+/** @ Nikita Kapoor
+ * fieldRequiredValidation() perfoems various checks on values enter in input fields
+ * displays appropriate messages for correction
+ */
+function fieldRequiredValidation(name, line1, city, province, postalCode, country, phone){
+    console.log('Inside validation');
+    var reqfield = [];
+    if(name == "" || name == null){
+        reqfield.push("personName");
+    }
+    if(phone == "" || phone == null){
+        reqfield.push("phone");
+    }
+    if(line1 == "" || line1 == null){
+        reqfield.push("line1");
+    }
+    if(city == "" || city == null){
+        reqfield.push("city");
+    }
+    if(province == "" || province == null){
+        reqfield.push("province");
+    }
+    if(postalCode == "" || postalCode == null){
+        reqfield.push("postalCode");
+    }
+    if(country == "" || country == null){
+        reqfield.push("country");
+    }
+    console.log("reqfield : ",reqfield);
+    if(reqfield.length > 0){
+        var msg = "Please enter Required Fields:\n";
+        for(i = 0; i < reqfield.length; i++){
+            msg += "-  "+reqfield[i]+"\n";
+        }
+        confirm(msg);
+    }else{
+        console.log("return true");
+        var msg = '';
+
+        // province code check
+        if(/^[A-Z]{1,2}$/.test(province) != true ){
+            msg += "Please enter only 2 uppercase letters in Provice Code. ";
+        }
+
+        //postal code check
+        if(/[A-Z]{1}\d[A-Z]{1}\d[A-Z]{1}\d$/.test(postalCode) != true ){
+           msg += "Please enter 6 letter postal code in format A2B3C1. ";
+        }
+
+        //name character length check
+        if(/^[a-z\s\.']+$/i.test(name) != true || name.length > 100 ){
+            msg += "Max 100 characters containing only letters, . and ' are allowed in Name. ";
+        }
+
+        //City character length check
+        if(/^[a-zA-Z]*$/.test(city) != true || city.length > 100 ){
+            msg += "Max 100 characters and only alphabets are allowed for City. ";
+        }
+
+        //Country character length check
+        if(/^[a-zA-Z]*$/.test(country) != true || country.length > 100 ){
+            msg += "Max 100 characters and only alphabets are allowed for Country. ";
+        }
+
+
+        if(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(phone) != true || phone.length > 100 ){
+            msg += "Enter correct phone format - 123 456 7891 or 123-456-7891. ";
+        }
+        
+
+        document.getElementById("valMsg").innerHTML = msg;
+        return true;
+    }
+}
+
+
+/** @ Nikita Kapoor
+ * Clear all the fields of delivery address
+ */
+resetAddressForm = function resetAddressForm(){
+    document.getElementById("personName").value = '';
+    document.getElementById("line1").value = '';
+    document.getElementById("line2").value = '';
+    document.getElementById("city").value = '';
+    document.getElementById("province").value = '';
+    document.getElementById("postalCode").value = '';
+    document.getElementById("country").value = 'Canada';
 }
