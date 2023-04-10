@@ -10,7 +10,14 @@ nav {
     box-sizing: border-box;
     z-index: 100;
 }
+.btn {
+  display: inline-flex;
+  align-items: center;
+}
 
+.material-symbols-rounded {
+  margin-left: 5px;
+}
 nav div {
     color: #fff;
 }
