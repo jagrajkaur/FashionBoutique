@@ -1,9 +1,4 @@
-// $(function () {
-// });
 
-/*$ = function(element_id){
-    return document.getElementById(element_id);
-}*/
 
 if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
@@ -278,6 +273,7 @@ function updateCartTotal() {
  * calls displayOrderSummary() when user clicks on proceed button on address window
  */
 openForm = function openForm() {
+
     $("#enclosing").addClass("disable-content");
     document.getElementById("popupForm").style.opacity = 1;
     document.getElementById("popupForm").style.display = "block";
@@ -315,7 +311,7 @@ if(localStorage.getItem('address')){
  * validate the address entered and store in local storage
  * call fieldRequiredValidation() to perform actal validations on input fields*/
 displayOrderSummary = function displayOrderSummary(){
-    console.log('order summary will display here : ', $("#personName"));
+    // console.log('order summary will display here : ', $("#personName"));
     var name = document.getElementById("personName").value.trim();
     var line1 = document.getElementById("line1").value.trim();
     var line2 = document.getElementById("line2").value.trim();
@@ -339,6 +335,8 @@ displayOrderSummary = function displayOrderSummary(){
         };
         console.log('address : ',address);
         localStorage.setItem('address', JSON.stringify(address));
+          // Navigate to the thank you page
+  window.location.href = 'thankyou.html';
     }
     else{
        console.log('Some validation failed. Check with Admin');

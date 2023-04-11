@@ -1,0 +1,28 @@
+
+body{
+    background: var( --card-background);
+    color: white;
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+
+#checkmark {
+    color: white;
+    font-size: 100px;
+  }
+
+  p,span{
+    font-size: 1.2em;
+  }
+
+  .btn{
+    border: none;
+    color: #fff;
+    background-color: var(--primary-color);
+    width: fit-content;
+    box-shadow: 0px 4px 15px #b59edb;
+    opacity: 0.8;
+    transition: 0.6s ease;
+}
