@@ -5,7 +5,11 @@
     <!--
             This is shopping cart of website
             @author Rajwant Kaur
-            @date 21 March 2023
+            @date 21 March 2023- Added styling, all dynamic calculations, 
+                  -add items, remove items, 
+                  -change quantity,
+                  - calculate total pice
+                  -Taxes,delivery calculations summary
 
             @ Nikita Kapoor(NK) - Added logic for adding items from index page to the cart 
                                     - linking between pages index.html and shopping-cart-224.html
@@ -36,13 +40,19 @@
   </head>
 
   <body className="snippet-body" onload="readyFunc()">
+    <nav>
+      <!-- START :: LOGO SECTION -->
+      <div>
+          <a href="./index.html"><img src="./images/logo.png" class="logo-img" alt="FaSHCO"></a>
+      </div>
+  </nav>
     <div class="card">
       <div id="enclosing">
         <div class="row" id="cartSection">
           <div class="col-md-8 cart">
             <div class="title">
               <div class="row">
-                <div class="col">
+                <div class="col text-muted">
                   <h4><b>Your Bucket</b></h4>
                 </div>
                 <div
@@ -53,7 +63,7 @@
                 </div>
               </div>
             </div>
-            <div class="cart-items" id="cartitemsIDNK"></div>
+            <div class="cart-items text-muted" id="cartitemsIDNK"></div>
             <div class="back-to-shop">
               <a href="./index.html"
                 >&leftarrow;<span class="text-muted"
@@ -94,8 +104,7 @@
                   Express-Delivery- $15.00
                 </option>
               </select>
-              <p>Do you have any Promotional Code?</p>
-              <input id="promoCode" placeholder="Enter your code" />
+             
             </form>
             <div
               class="row"
@@ -214,7 +223,7 @@
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
     ></script>
 
-    <!-- Here async will load script  file in background. -->
+    <!-- Rajwant Kaur Here async will load script  file in background. -->
     <script
       type="text/javascript"
       src="./js/shopping-cart-224.js"
