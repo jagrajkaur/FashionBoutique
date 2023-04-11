@@ -30,7 +30,6 @@ form.addEventListener('submit', function(event) {
     // // Convert the array to JSON and store it in local storage
     // const jsonData = JSON.stringify(formDataArray);
     // localStorage.setItem('formData', jsonData);
-    // Store data in local storage
 
     // Store the user data in local storage
     window.localStorage.setItem("userData", JSON.stringify(formData));
@@ -79,9 +78,6 @@ function validateForm() {
     alert('Passwords do not match.');
     isValid = false;
   }
-
-
-
 
   // Check if privacy policy is checked
   if (!privacyPolicy.checked) {

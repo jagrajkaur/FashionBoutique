@@ -76,70 +76,10 @@
     </div>
 </footer>
 
-    
+    <script
+      type="text/javascript"
+      src="./js/login.js"></script>
+
     </body>
 </html>
 
-
-<script>
-const userData = JSON.parse(window.localStorage.getItem("userData"));
-document.getElementById("email").value = userData.email;
-document.getElementById("password").value = userData.password;
-
-
-const form = document.getElementById("member_form");
-    form.addEventListener("submit", function(event) {
-      event.preventDefault(); 
-    
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-    
-      if (!email || !password) { // check if fields are empty
-        alert("Please enter both email and password.");
-        return;
-      }
-
-
-    
-    //   // validate username length
-    //   const uNameLength = email.length >= 4 ;
-    //   if (!uNameLength) {
-    //     alert("Invalid username. Too short. Usernames contain at least 4 characters.");
-    //     return;
-    //   }
-    
-    //   //validate password
-    //   const pwCheck = /^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
-    //   if (!pwCheck.test(password)) {
-    //     alert("Password must be 8-15 characters and contain at least 1 special character.");
-    //     return;
-    //   }
-    
-      //sample User
-      const loggedInUser = email.value;
-      const loggedInUserType = "user";
-    
-      // show success message
-      const successMsg = document.createElement("div");
-      successMsg.className = "alert alert-success mt-4";
-      successMsg.role = "alert";
-      successMsg.innerHTML = `Welcome, ${loggedInUser}!`;
-    
-      const successSection = document.getElementById("success-section");
-      successSection.innerHTML = "";
-      successSection.appendChild(successMsg);
-    
-    if (loggedInUserType === "admin") {
-  const adminPanel = document.createElement("div");
-  adminPanel.className = "show mt-3";
-  adminPanel.innerHTML = "Admin panel content";
-
-  successSection.appendChild(adminPanel);
-    //   clear form fields
-      document.getElementById("email").value = "";
-      document.getElementById("password").value = "";
-    }
-    
-    });
-    </script>
-    
