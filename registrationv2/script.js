@@ -7,6 +7,8 @@ const stylePreference = document.getElementById('style-preference');
 const privacyPolicy = document.getElementById('privacy-policy');
 const exclusiveOffers = document.getElementById('exclusive-offers');
 
+
+
 // Add a submit event listener to the form
 form.addEventListener('submit', function(event) {
   // Prevent the default form submission behavior
@@ -21,17 +23,23 @@ form.addEventListener('submit', function(event) {
       exclusiveOffers: exclusiveOffers.checked,
     };
 
-    // Save the form data to an array
-    const formDataArray = JSON.parse(localStorage.getItem('formData')) || [];
-    formDataArray.push(formData);
+    // // Save the form data to an array
+    // const formDataArray = JSON.parse(localStorage.getItem('formData')) || [];
+    // formDataArray.push(formData);
 
-    // Convert the array to JSON and store it in local storage
-    const jsonData = JSON.stringify(formDataArray);
-    localStorage.setItem('formData', jsonData);
+    // // Convert the array to JSON and store it in local storage
+    // const jsonData = JSON.stringify(formDataArray);
+    // localStorage.setItem('formData', jsonData);
+    // Store data in local storage
+
+    // Store the user data in local storage
+    window.localStorage.setItem("userData", JSON.stringify(formData));
 
     // If registration is successful, show a success message and reset the form
     alert('Registration successful!');
     form.reset();
+    window.location.href = "../login.html";
+
 
     // Create a new Blob object with the form data
     const blob = new Blob([jsonData], {type: "text/plain"});
@@ -86,5 +94,5 @@ function validateForm() {
   return isValid;
 }
 
-const formDataArray = JSON.parse(localStorage.getItem('formData')) || [];
-console.log(formDataArray);
+// const formDataArray = JSON.parse(localStorage.getItem('formData')) || [];
+// console.log(formDataArray);
