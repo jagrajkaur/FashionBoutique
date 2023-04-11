@@ -1,6 +1,11 @@
+// $(function () {
+// });
 
+/*$ = function(element_id){
+    return document.getElementById(element_id);
+}*/
 
-if (document.readyState == 'loading') {
+/*if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
 } else {
     ready();
@@ -12,13 +17,25 @@ window.onload = function(){
     document.getElementById('addressToCart') != null ? document.getElementById('addressToCart').onclick = closeForm : "";
     document.getElementById('resetAddress') != null ? document.getElementById('resetAddress').onclick = resetAddressForm : "";
     
-}
+
+    var buyNowButtons = document.getElementsByClassName('btn-add-to-cart');
+    console.log('buyNowButtons : ',buyNowButtons);
+    for (var i = 0; i < buyNowButtons.length; i++) {
+        var singleBtn = buyNowButtons[i];
+        singleBtn.addEventListener('click', addToCartClicked);
+    }
+}*/
 
 
 function ready() {
 
     //NK - Load cart contents in cart page
     addItemToCart();
+
+    document.getElementById('checkoutBtn') != null ? document.getElementById('checkoutBtn').onclick = openForm : "";
+    document.getElementById('addressToCart') != null ? document.getElementById('addressToCart').onclick = closeForm : "";
+    document.getElementById('resetAddress') != null ? document.getElementById('resetAddress').onclick = resetAddressForm : "";
+
 
     var removeItems = document.getElementsByClassName('remove-items');
     for (var i = 0; i < removeItems.length; i++) {
@@ -85,11 +102,11 @@ function ready() {
 
     }
 
-    var buyNowButtons = document.getElementsByClassName('btn-add-to-cart');
-    for (var i = 0; i < buyNowButtons.length; i++) {
-        var singleBtn = buyNowButtons[i];
-        singleBtn.addEventListener('click', addToCartClicked);
-    }
+    // var buyNowButtons = document.getElementsByClassName('btn-add-to-cart');
+    // for (var i = 0; i < buyNowButtons.length; i++) {
+    //     var singleBtn = buyNowButtons[i];
+    //     singleBtn.addEventListener('click', addToCartClicked);
+    // }
 
     //addItemToCart();
 }
@@ -152,6 +169,7 @@ function removeItemFromStorage(title){
 */
 console.log('itemListName 1 : ',itemListName);
 function addToCartClicked(event){
+    console.log('This is being clicked!!!!');
     var button = event.target;
     var shopItem = button.parentElement.parentElement.parentElement;
     var title = shopItem.getElementsByClassName('subhead-2')[0].innerText;
@@ -273,7 +291,6 @@ function updateCartTotal() {
  * calls displayOrderSummary() when user clicks on proceed button on address window
  */
 openForm = function openForm() {
-
     $("#enclosing").addClass("disable-content");
     document.getElementById("popupForm").style.opacity = 1;
     document.getElementById("popupForm").style.display = "block";
@@ -290,14 +307,14 @@ closeForm = function closeForm(){
 
 /** @ Nikita Kapoor
  * closes delivery address window when clicked outside */
-$(document).mouseup(function(event) 
+/*$(document).mouseup(function(event) 
 {
     var container = $("#popupForm");
     if (!container.is(event.target) && container.has(event.target).length === 0) 
     {
         closeForm();
     }
-});
+});*/
 
 
 //NK - global variable to store and fetch delivery addres to/from localstorage
@@ -311,7 +328,7 @@ if(localStorage.getItem('address')){
  * validate the address entered and store in local storage
  * call fieldRequiredValidation() to perform actal validations on input fields*/
 displayOrderSummary = function displayOrderSummary(){
-    // console.log('order summary will display here : ', $("#personName"));
+    console.log('order summary will display here : ', $("#personName"));
     var name = document.getElementById("personName").value.trim();
     var line1 = document.getElementById("line1").value.trim();
     var line2 = document.getElementById("line2").value.trim();
@@ -335,8 +352,6 @@ displayOrderSummary = function displayOrderSummary(){
         };
         console.log('address : ',address);
         localStorage.setItem('address', JSON.stringify(address));
-          // Navigate to the thank you page
-  window.location.href = 'thankyou.html';
     }
     else{
        console.log('Some validation failed. Check with Admin');
