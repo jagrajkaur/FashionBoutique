@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="./css/registration.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./css/typography.css">
+    <link rel="stylesheet" href="./css/theme.css">
+    <link rel="stylesheet" href="./css/feature-section.css">
+    <link rel="stylesheet" href="./css/category-section.css">
+    <link rel="stylesheet" href="./css/trending-section.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    
+    <script src="./js/header.js"></script>
+    
+  </head>
+  <body>
+    <header></header>
+    <div class="container d-flex d-flex-col ">
+      <h1>Registration Form</h1>
+      <form id="registration-form" method="post" class="center">
+        <div class="form-row">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-row">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-row">
+          <label for="confirm-password">Confirm Password:</label>
+          <input type="password" id="confirm-password" name="confirm-password" required>
+        </div>
+        <div class="form-row">
+          <label for="style-preference">Style Preference:</label>
+          <select id="style-preference" name="style-preference">
+            <option value="">-Please choose an option-</option>
+            <option value="women">Women</option>
+            <option value="men">Men</option>
+            <option value="boys">Boys</option>
+            <option value="girls">Girls</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input type="checkbox" id="privacy-policy" name="privacy-policy" required>
+          <label for="privacy-policy">I agree to the <a href="privacypolicy.html" target="_blank">privacy and cookie policy</a></label>
+        </div>
+        <div class="form-row">
+          <input type="checkbox" id="exclusive-offers" name="exclusive-offers">
+          <label for="exclusive-offers">I would like to receive exclusive offers</label>
+        </div>
+        <div class="form-row">
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+    <footer>
+      <div class="d-flex">
+          <div class="col-6">
+              <div class="footer-content">
+                  <h3>Fashion Boutique</h3>
+                  <p>Fashion is a form of self-expression that allows people to try on different identities and
+                      experiment with their apprearance. It can also be a way for individuals to show off their wealth 
+                      and social status.
+                  </p>
+                  <ul class="socials">
+                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                      <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                      <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                      <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="col-6" id="contact">
+                  <h3>Contact us</h3>
+                  <form action="#">
+                      <div class="d-flex">
+                          <div class="col-2 mt-1em"><label for="fname">Full Name:</label></div>
+                          <div class="col-10"><input type="text" id="fname" name="fullname" placeholder="Your name.."></div>
+                      </div>
+                       
+                      <div class="d-flex">
+                          <div class="col-2 mt-1em"><label for="country">Country:</label></div>
+                          <div class="col-10">
+                              <select id="country" name="country" style="width: 64%;">
+                                  <option value="canada">Canada</option>
+                                  <option value="australia">Australia</option>
+                                  <option value="usa">USA</option>
+                              </select>
+                          </div>
+                      </div>
+                      
+                      <div class="d-flex">
+                          <div class="col-2 mt-1em"><label for="subject">Subject: </label></div>
+                          <div class="col-10"><textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea></div>
+                      </div>
+
+                      <div class="d-flex">
+                          <div class="col-2 mt-1em"></div>
+                          <div class="col-10"><button class="btn btn-primary">Submit</button></div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+
+      <div class="footer-bottom">
+          <p>copyright &copy;2022 <a href="#">fashion boutique</a></p>
+          <div class="footer-menu">
+              <ul class="f-menu">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#category">Category</a></li>
+                  <li><a href="#trending">Trending</a></li>
+              </ul>
+          </div>
+      </div>
+  </footer>
+    <script src="./js/registration.js"></script>
+  </body>
+</html>
