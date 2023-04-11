@@ -11,6 +11,9 @@ $ = function(id){
  after the html content is completely rendered on the page */
 window.onload = function(){
     init();
+
+    /* This fucntion is used to call the shopping cart function to reload the function calling after DOM is loaded */
+    readyFunc();
 }
 
 var init = function(){
