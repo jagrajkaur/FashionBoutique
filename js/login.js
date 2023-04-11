@@ -71,5 +71,9 @@ form.addEventListener("submit", function(event) {
   // clear fields when successful
   document.getElementById("email").value = "";
   document.getElementById("password").value = "";
-  
+
+  var usertype = document.getElementById("usertype").value;
+  if (usertype == "admin") {
+    document.body.style.backgroundColor = "pink";
+  }  
 });
