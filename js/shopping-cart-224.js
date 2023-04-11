@@ -1,25 +1,13 @@
+function readyFunc() {
 
-
-if (document.readyState == 'loading') {
-    document.addEventListener('DOMContentLoaded', ready)
-} else {
-    ready();
-}
-
-
-window.onload = function(){
-    document.getElementById('checkoutBtn') != null ? document.getElementById('checkoutBtn').onclick = openForm : "";
-    document.getElementById('addressToCart') != null ? document.getElementById('addressToCart').onclick = closeForm : "";
-    document.getElementById('resetAddress') != null ? document.getElementById('resetAddress').onclick = resetAddressForm : "";
-    
-}
-
-
-function ready() {
-
-    //NK - Load cart contents in cart page
     addItemToCart();
 
+     document.getElementById('checkoutBtn') != null ? document.getElementById('checkoutBtn').onclick = openForm : "";
+     //document.getElementById('addressToCart') != null ? document.getElementById('addressToCart').onclick = closeForm : "";
+     document.getElementById('resetAddress') != null ? document.getElementById('resetAddress').onclick = resetAddressForm : "";
+
+    //NK - Load cart contents in cart page
+    
     var removeItems = document.getElementsByClassName('remove-items');
     for (var i = 0; i < removeItems.length; i++) {
         var removeItemButton = removeItems[i];
@@ -152,6 +140,7 @@ function removeItemFromStorage(title){
 */
 console.log('itemListName 1 : ',itemListName);
 function addToCartClicked(event){
+    console.log('This is being clicked!!!!');
     var button = event.target;
     var shopItem = button.parentElement.parentElement.parentElement;
     var title = shopItem.getElementsByClassName('subhead-2')[0].innerText;
@@ -181,8 +170,11 @@ function addToCartClicked(event){
  * dynamic rows created based on itemList content
 */
 function addItemToCart(){
+    console.log('addItemToCart initiated');
     var itemListInternal = JSON.parse(localStorage.getItem('itemList'));
+    console.log('itemListInternal: ', itemListInternal);
     var cartItems = document.getElementById("cartitemsIDNK");
+    console.log('cartItems: ', cartItems);
     if(itemListInternal == null || itemListInternal.length == 0){
         console.log('On index page hence itemListInternal is null : ',itemListInternal);
     }
@@ -273,14 +265,21 @@ function updateCartTotal() {
  * calls displayOrderSummary() when user clicks on proceed button on address window
  */
 openForm = function openForm() {
-
-    $("#enclosing").addClass("disable-content");
+    if(itemList == null || itemList.length <= 0){
+        alert("No items in cart for checkout!");
+    }
+    else{
+        $("#enclosing").addClass("disable-content");
     document.getElementById("popupForm").style.opacity = 1;
     document.getElementById("popupForm").style.display = "block";
     document.getElementById("ProceedBtn").addEventListener('click', displayOrderSummary);
+    }
+    
 }
 
 
+/** @ Nikita Kapoor
+ * closes delivery address window */
 closeForm = function closeForm(){
     console.log('We will close and go back to cart');
     document.getElementById("popupForm").style.display = "none";
@@ -290,14 +289,26 @@ closeForm = function closeForm(){
 
 /** @ Nikita Kapoor
  * closes delivery address window when clicked outside */
-$(document).mouseup(function(event) 
+document.addEventListener("mouseup", function(event){
+    var container = $("#popupForm");
+    if(container != null || container != undefined){
+        if (!container.is(event.target) && container.has(event.target).length === 0) 
+        {
+            closeForm();
+        }
+    }
+    
+});
+
+
+/*$(document).mouseup(function(event) 
 {
     var container = $("#popupForm");
     if (!container.is(event.target) && container.has(event.target).length === 0) 
     {
         closeForm();
     }
-});
+});*/
 
 
 //NK - global variable to store and fetch delivery addres to/from localstorage
@@ -311,7 +322,7 @@ if(localStorage.getItem('address')){
  * validate the address entered and store in local storage
  * call fieldRequiredValidation() to perform actal validations on input fields*/
 displayOrderSummary = function displayOrderSummary(){
-    // console.log('order summary will display here : ', $("#personName"));
+    console.log('order summary will display here : ', $("#personName"));
     var name = document.getElementById("personName").value.trim();
     var line1 = document.getElementById("line1").value.trim();
     var line2 = document.getElementById("line2").value.trim();
@@ -335,8 +346,6 @@ displayOrderSummary = function displayOrderSummary(){
         };
         console.log('address : ',address);
         localStorage.setItem('address', JSON.stringify(address));
-          // Navigate to the thank you page
-  window.location.href = 'thankyou.html';
     }
     else{
        console.log('Some validation failed. Check with Admin');
@@ -425,6 +434,7 @@ function fieldRequiredValidation(name, line1, city, province, postalCode, countr
  */
 resetAddressForm = function resetAddressForm(){
     document.getElementById("personName").value = '';
+    document.getElementById("phone").value = '';
     document.getElementById("line1").value = '';
     document.getElementById("line2").value = '';
     document.getElementById("city").value = '';
