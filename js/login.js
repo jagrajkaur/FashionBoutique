@@ -66,16 +66,6 @@ form.addEventListener("submit", function(event) {
     return;  
   }
 
-//   // clear success if there's invalid entry
-//   if (!isValid) {
-//     // clear success message and section
-//     const successSection = document.getElementById("success-section");
-//     successSection.innerHTML = "";
-//     document.querySelector('header').style.backgroundColor = '#aa94ce';
-//     document.body.style.backgroundColor = '#886fb2';
-//     return;
-//   }
-
   // user welcome
   const loggedInUser = email;
   const loggedInUserType = "user";
