@@ -1,0 +1,160 @@
+/* Set the color variables */
+:root {
+  --primary-color: #886fb2;
+  --accent-color: #a087c9;
+  --app-background: #F6F7FB;
+  --card-background: #aa94ce;
+  --text-black: #212121;
+}
+
+/* Set default styles for the html and body elements */
+html, body {
+  padding: 0;
+  margin: 0;
+  min-width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Set a flexible row layout for elements with the "d-flex" class */
+.d-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Set a flexible column layout for elements with the "d-flex-col" class */
+.d-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Set color for all h1 elements */
+h1, h2 {
+  color: var(--primary-color);
+}
+
+/* Set styles for the form element */
+form {
+  background-color: var(--card-background);
+  padding: 40px;
+}
+
+/* Set color for all label elements */
+label {
+  color: var(--text-black);
+}
+
+/* Set background color for email and password inputs, and select elements */
+input[type="email"],
+input[type="password"],
+select {
+  background-color: #fff;
+}
+
+/* Set border styles for focused email, password inputs, and select elements */
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+  outline: none;
+  border: 2px solid var(--accent-color);
+}
+
+/* Set styles for the submit button */
+input[type="submit"] {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Set opacity for the submit button on hover */
+input[type="submit"]:hover {
+  opacity: 0.8;
+}
+
+/* Set color for labels associated with checked checkboxes */
+input[type="checkbox"] + label {
+  color: var(--text-black);
+}
+
+/* Set styles for checked checkboxes */
+input[type="checkbox"]:checked + label:before {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Set icon for checked checkboxes */
+input[type="checkbox"]:checked + label:after {
+  content: "\f00c";
+  font-family: FontAwesome;
+  font-size: 10px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  color: #fff;
+}
+
+/* Set color for options within the select element */
+select option {
+  color: var(--text-black);
+}
+
+/* Set flexible row layout for elements with the "form-row" class */
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Set styles for labels within elements with the "form-row" class */
+.form-row label {
+  margin-right: 10px;
+  min-width: 150px;
+}
+
+/* Set styles for checkboxes within elements with the "form-row" class */
+.form-row input[type="checkbox"] {
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+}
+
+/* Set styles for invalid input elements */
+.form-row input:invalid {
+  border-color: red;
+}
+
+/* Set styles for focused input elements */
+.form-row input:focus {
+  border-color: blue
+}
+/*center the container both vertically and horizontally, and make it take up the full height of the viewport*/
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Set background color for container */
+.privcontainer {
+  background-color: #a087c9;
+}
+
+/* Center container horizontally */
+.privcontainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Adjust container size based on browser size */
+.privcontainer {
+  width: 80%;
+  max-width: 1000px;
+  min-width: 500px;
+}
