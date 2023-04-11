@@ -13,7 +13,11 @@ form.addEventListener("submit", function(event) {
 
   if (!email || !password) { // check if fields are empty
     alert("Please enter both email and password.");
-    isValid = false;
+    const successSection = document.getElementById("success-section");
+    successSection.innerHTML = "";
+    document.querySelector('header').style.backgroundColor = '#aa94ce';
+    document.body.style.backgroundColor = '#886fb2';
+    return;
   }
 
   // Check if email is in correct format using a regular expression
@@ -21,7 +25,11 @@ form.addEventListener("submit", function(event) {
   if (!email.match(emailPattern)) {
     // If email is not in correct format, show an error message and set isValid to false
     alert('Please enter a valid email address.');
-    isValid = false;
+    const successSection = document.getElementById("success-section");
+    successSection.innerHTML = "";
+    document.querySelector('header').style.backgroundColor = '#aa94ce';
+    document.body.style.backgroundColor = '#886fb2';
+    return;
   }
 
   // Define regular expressions for password requirements
@@ -31,28 +39,42 @@ form.addEventListener("submit", function(event) {
   if (!passwordRegex.test(password)) {
     // If password does not meet requirements, show an error message and set isValid to false
     alert('Passwords must be at least 8 characters long and contain at least one number, one special character, and one uppercase letter.');
-    isValid = false;
+    const successSection = document.getElementById("success-section");
+    successSection.innerHTML = "";
+    document.querySelector('header').style.backgroundColor = '#aa94ce';
+    document.body.style.backgroundColor = '#886fb2';
+    return;
   }
     
   // check if email is existing
   if (email !== userData.email ) {
     alert("Email not existing. Please register.");
-    isValid = false;
+    const successSection = document.getElementById("success-section");
+    successSection.innerHTML = "";
+    document.querySelector('header').style.backgroundColor = '#aa94ce';
+    document.body.style.backgroundColor = '#886fb2';
+    return;
   }
 
   // check if password is correct from localStorage
   if (password !== userData.password) {
     alert("Wrong password.");
-    isValid = false;
-  }
-
-  // clear success if there's invalid entry
-  if (!isValid) {
-    // clear success message and section
     const successSection = document.getElementById("success-section");
     successSection.innerHTML = "";
-    return;
+    document.querySelector('header').style.backgroundColor = '#aa94ce';
+    document.body.style.backgroundColor = '#886fb2';
+    return;  
   }
+
+//   // clear success if there's invalid entry
+//   if (!isValid) {
+//     // clear success message and section
+//     const successSection = document.getElementById("success-section");
+//     successSection.innerHTML = "";
+//     document.querySelector('header').style.backgroundColor = '#aa94ce';
+//     document.body.style.backgroundColor = '#886fb2';
+//     return;
+//   }
 
   // user welcome
   const loggedInUser = email;
@@ -75,5 +97,12 @@ form.addEventListener("submit", function(event) {
   var usertype = document.getElementById("usertype").value;
   if (usertype == "admin") {
     document.body.style.backgroundColor = "pink";
+  
+  }
+  else
+  {    
+    document.querySelector('header').style.backgroundColor = '#aa94ce';
+    document.body.style.backgroundColor = '#886fb2';
+    
   }  
 });
