@@ -1,3 +1,9 @@
+/* 
+This contains the html code for the registration function of the website
+Owned and created by Michelle R. Hementera
+C0863836
+ */
+
 // Get references to the form elements
 const form = document.getElementById('registration-form');
 const email = document.getElementById('email');
