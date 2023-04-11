@@ -7,7 +7,7 @@
             @author Jagraj Kaur
             @date 20 March'2022
         -->
-        <title>Fashion Paradise</title>
+        <title>Fashion Boutique</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -35,9 +35,18 @@
 
                  <!-- START :: MENU OPTIONS -->
                 <div class="menu-label">
-                    <a href="#" class="label"> Home </a>
-                    <a href="#category" class="label"> Categories </a>
-                    <a href="#trending" class="label"> Trending </a>
+                    <ul>
+                        <li><a href="#" class="label"> Home </a></li>
+                        <li class="menu-label">
+                            <a href="#category" class="label">Categories</a>
+                            <ul>
+                                <li><a href="#category" id="womens_wear_nav_id">Women's Wear</a></li>
+                                <li><a href="#category" id="mens_wear_nav_id">Men's Wear</a></li>
+                                <li><a href="#category" id="winter_wear_nav_id">Winter Collection</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#trending" class="label"> Trending </a></li>
+                    </ul>
                 </div>
                 <!-- END :: MENU OPTIONS -->
 
@@ -70,7 +79,7 @@
                         Check out collection to show who you are. 
                     </p>
                 </div>
-                <button class="btn btn-primary">Explore Product <span class="material-symbols-rounded">arrow_outward</span></button>
+                <a href="#category"><button class="btn btn-primary">Explore Product <span class="material-symbols-rounded">arrow_outward</span></button></a>
             </div>
             <!-- COL 2 -->
             <div class="col-3">
@@ -102,293 +111,15 @@
         <section id="category" class="category-section">
             <div class="row">
                 <div class="col-12">
-                    <h6 class="display-1">Category</h6>
+                    <h6 class="display-1">Category <span id="sub_category"></span></h6>
                 </div>
             </div>
 
-            <div class="category-options-list d-flex">
-                <div class="d-flex-col">
-                    <img class="options-img" src="./images/category/t-shirt.png" alt="ALL">
-                    <p class="caption text-center options-text selected">All</p>
-                </div>
+            <!-- Content loads with the help of JavaScript -->
+            <div class="category-options-list d-flex" id="sub_category-options"></div>
 
-                <div class="d-flex-col">
-                    <img class="options-img" src="./images/category/crop-top.png" alt="Tops">
-                    <p class="caption text-center options-text">Tops</p>
-                </div>
-
-                <div class="d-flex-col">
-                    <img class="options-img" src="./images/category/woman-clothes.png" alt="Dress">
-                    <p class="caption text-center options-text">Dress</p>
-                </div>
-
-                <div class="d-flex-col">
-                    <img class="options-img" src="./images/category/suit.png" alt="Formal">
-                    <p class="caption text-center options-text">Formals</p>
-                </div>
-
-                <div class="d-flex-col">
-                    <img class="options-img" src="./images/category/sport-wear.png" alt="Sports">
-                    <p class="caption text-center options-text">Sports</p>
-                </div>
-
-                <div class="d-flex-col">
-                    <img class="options-img" src="./images/category/cap.png" alt="Hat">
-                    <p class="caption text-center options-text">Hat</p>
-                </div>
-            </div>
-
-            <div class="products-gallery">
-                <div class="product-container">
-                    <img class="product-image image-icon" src="./images/products/green-frock.webp" alt="Green Frock">
-                    <div class="product-details">
-                        <div class="pt-1em pl-1em">
-                            <p class="subhead-2">Green Frock</p>
-                            <p class="d-flex align-item-center label">
-                                <span class="material-symbols-rounded">
-                                    star_half
-                                </span>
-                                <span>
-                                    4.6
-                                </span>
-                            </p>
-                        </div>
-
-                        <div class="pl-1em pb-1em">
-                            <p class="label">
-                                <span class="text-strike-light">$15</span>
-                                <span class="final-price">$12</span>
-                            </p>
-                            <div class="d-flex">
-                                <button class="scale-down-half btn btn-primary btn-add-to-cart">Buy Now</button>
-                                <button class="scale-down-half btn btn-icon filled-on-hover">
-                                    <span class="material-symbols-rounded color-pink">
-                                        favorite
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-container">
-                    <img class="product-image image-icon" src="./images/products/red-dress.jpg" alt="Red Dress">
-                    <div class="product-details">
-                        <div class="pt-1em pl-1em">
-                            <p class="subhead-2">Red Dress</p>
-                            <p class="d-flex align-item-center label">
-                                <span class="material-symbols-rounded">
-                                    star_half
-                                </span>
-                                <span>
-                                    4.6
-                                </span>
-                            </p>
-                        </div>
-                        <div class="pl-1em pb-1em">
-                            <p class="label">
-                                <span class="final-price">$15</span>
-                            </p>
-                            <div class="d-flex">
-                                <button class="scale-down-half btn btn-primary btn-add-to-cart">Buy now</button>
-                                <button class="scale-down-half btn btn-icon filled-on-hover">
-                                    <span class="material-symbols-rounded color-pink ">
-                                        favorite
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-container">
-                    <img class="product-image image-icon" src="./images/products/black-dress.jpg" alt="Black Frock">
-                    <div class="product-details">
-                        <div class="pt-1em pl-1em">
-                            <p class="subhead-2">Black Frock</p>
-                            <p class="d-flex align-item-center label">
-                                <span class="material-symbols-rounded">
-                                    star_half
-                                </span>
-                                <span>
-                                    4.6
-                                </span>
-                            </p>
-                        </div>
-                        <div class="pl-1em pb-1em">
-                            <p class="label">
-                                <span class="text-strike-light">$12</span>
-                                <span class="final-price">$10</span>
-                            </p>
-                            <div class="d-flex">
-                                <button class="scale-down-half btn btn-primary btn-add-to-cart">Buy now</button>
-                                <button class="scale-down-half btn btn-icon filled-on-hover">
-                                    <span class="material-symbols-rounded color-pink ">
-                                        favorite
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-container">
-                    <img class="product-image image-icon" src="./images/products/check-dress.jpg" alt="Check dress">
-                    <div class="product-details">
-                        <div class="pt-1em pl-1em">
-                            <p class="subhead-2">Check Print Dress</p>
-                            <p class="d-flex align-item-center label">
-                                <span class="material-symbols-rounded">
-                                    star_half
-                                </span>
-                                <span>
-                                    4.6
-                                </span>
-                            </p>
-                        </div>
-                        <div class="pl-1em pb-1em">
-                            <p class="label">
-                                <span class="text-strike-light">$14</span>
-                                <span class="final-price">$12</span>
-                            </p>
-                            <div class="d-flex">
-                                <button class="scale-down-half btn btn-primary btn-add-to-cart">Buy now</button>
-                                <button class="scale-down-half btn btn-icon filled-on-hover">
-                                    <span class="material-symbols-rounded color-pink ">
-                                        favorite
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--
-                    Next ROW
-                -->
-
-                <div class="product-container">
-                    <img class="product-image image-icon" src="./images/products/formal-dress.jpg" alt="Formal Dress">
-                    <div class="product-details">
-                        <div class="pt-1em pl-1em">
-                            <p class="subhead-2">Formal Dress</p>
-                            <p class="d-flex align-item-center label">
-                                <span class="material-symbols-rounded">
-                                    star_half
-                                </span>
-                                <span>
-                                    4.6
-                                </span>
-                            </p>
-                        </div>
-                        <div class="pl-1em pb-1em">
-                            <p class="label">
-                                <span class="text-strike-light">$20</span>
-                                <span class="final-price">$16</span>
-                            </p>
-                            <div class="d-flex">
-                                <button class="scale-down-half btn btn-primary btn-add-to-cart">Buy now</button>
-                                <button class="scale-down-half btn btn-icon filled-on-hover">
-                                    <span class="material-symbols-rounded color-pink ">
-                                        favorite
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-container">
-                    <img class="product-image image-icon"
-                        src="./images/products/white-dress.png" alt="White Dress">
-                    <div class="product-details">
-                        <div class="pt-1em pl-1em">
-                            <p class="subhead-2">White Long Dress</p>
-                            <p class="d-flex align-item-center label">
-                                <span class="material-symbols-rounded">
-                                    star_half
-                                </span>
-                                <span>
-                                    4.6
-                                </span>
-                            </p>
-                        </div>
-                        <div class="pl-1em pb-1em">
-                            <p class="label">
-                                <span class="final-price">$10</span>
-                            </p>
-                            <div class="d-flex">
-                                <button class="scale-down-half btn btn-primary btn-add-to-cart">Buy now</button>
-                                <button class="scale-down-half btn btn-icon filled-on-hover">
-                                    <span class="material-symbols-rounded color-pink ">
-                                        favorite
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-container">
-                    <img class="product-image image-icon" src="./images/products/black-dress.webp" alt="Black Dress">
-                    <div class="product-details">
-                        <div class="pt-1em pl-1em">
-                            <p class="subhead-2">Black Dress</p>
-                            <p class="d-flex align-item-center label">
-                                <span class="material-symbols-rounded">
-                                    star_half
-                                </span>
-                                <span>
-                                    4.6
-                                </span>
-                            </p>
-                        </div>
-                        <div class="pl-1em pb-1em">
-                            <p class="label">
-                                <span class="text-strike-light">$15</span>
-                                <span class="final-price">$12</span>
-                            </p>
-                            <div class="d-flex">
-                                <button class="scale-down-half btn btn-primary btn-add-to-cart">Buy now</button>
-                                <button class="scale-down-half btn btn-icon filled-on-hover">
-                                    <span class="material-symbols-rounded color-pink ">
-                                        favorite
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-container">
-                    <img class="product-image image-icon"
-                        src="./images/products/purple-dress.png" alt="Purple Dress">
-                    <div class="product-details">
-                        <div class="pt-1em pl-1em">
-                            <p class="subhead-2">Purple Dress</p>
-                            <p class="d-flex align-item-center label">
-                                <span class="material-symbols-rounded">
-                                    star_half
-                                </span>
-                                <span>
-                                    4.6
-                                </span>
-                            </p>
-                        </div>
-                        <div class="pl-1em pb-1em">
-                            <p class="label">
-                                <span class="text-strike-light">$20</span>
-                                <span class="final-price">$15</span>
-                            </p>
-                            <div class="d-flex">
-                                <button class="scale-down-half btn btn-primary btn-add-to-cart">Buy now</button>
-                                <button class="scale-down-half btn btn-icon filled-on-hover">
-                                    <span class="material-symbols-rounded color-pink ">
-                                        favorite
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
+            <div class="products-gallery" id="sub_product-images">
                 
-                    </div>
-                </div>
                 <!-- END -->
             </div>
 
@@ -600,6 +331,8 @@
                 </div>
             </div>
         </footer>
+        
         <script type='text/javascript' src='./js/shopping-cart-224.js' async></script>
+        <script type='text/javascript' src='./js/logicScript-330.js' async></script>
     </body>
 </html>
