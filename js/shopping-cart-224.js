@@ -1,42 +1,13 @@
-// $(function () {
-// });
+function readyFunc() {
 
-/*$ = function(element_id){
-    return document.getElementById(element_id);
-}*/
-
-/*if (document.readyState == 'loading') {
-    document.addEventListener('DOMContentLoaded', ready)
-} else {
-    ready();
-}
-
-
-window.onload = function(){
-    document.getElementById('checkoutBtn') != null ? document.getElementById('checkoutBtn').onclick = openForm : "";
-    document.getElementById('addressToCart') != null ? document.getElementById('addressToCart').onclick = closeForm : "";
-    document.getElementById('resetAddress') != null ? document.getElementById('resetAddress').onclick = resetAddressForm : "";
-    
-
-    var buyNowButtons = document.getElementsByClassName('btn-add-to-cart');
-    console.log('buyNowButtons : ',buyNowButtons);
-    for (var i = 0; i < buyNowButtons.length; i++) {
-        var singleBtn = buyNowButtons[i];
-        singleBtn.addEventListener('click', addToCartClicked);
-    }
-}*/
-
-
-function ready() {
-
-    //NK - Load cart contents in cart page
     addItemToCart();
 
-    document.getElementById('checkoutBtn') != null ? document.getElementById('checkoutBtn').onclick = openForm : "";
-    document.getElementById('addressToCart') != null ? document.getElementById('addressToCart').onclick = closeForm : "";
-    document.getElementById('resetAddress') != null ? document.getElementById('resetAddress').onclick = resetAddressForm : "";
+     document.getElementById('checkoutBtn') != null ? document.getElementById('checkoutBtn').onclick = openForm : "";
+     //document.getElementById('addressToCart') != null ? document.getElementById('addressToCart').onclick = closeForm : "";
+     document.getElementById('resetAddress') != null ? document.getElementById('resetAddress').onclick = resetAddressForm : "";
 
-
+    //NK - Load cart contents in cart page
+    
     var removeItems = document.getElementsByClassName('remove-items');
     for (var i = 0; i < removeItems.length; i++) {
         var removeItemButton = removeItems[i];
@@ -102,11 +73,11 @@ function ready() {
 
     }
 
-    // var buyNowButtons = document.getElementsByClassName('btn-add-to-cart');
-    // for (var i = 0; i < buyNowButtons.length; i++) {
-    //     var singleBtn = buyNowButtons[i];
-    //     singleBtn.addEventListener('click', addToCartClicked);
-    // }
+    var buyNowButtons = document.getElementsByClassName('btn-add-to-cart');
+    for (var i = 0; i < buyNowButtons.length; i++) {
+        var singleBtn = buyNowButtons[i];
+        singleBtn.addEventListener('click', addToCartClicked);
+    }
 
     //addItemToCart();
 }
@@ -199,8 +170,11 @@ function addToCartClicked(event){
  * dynamic rows created based on itemList content
 */
 function addItemToCart(){
+    console.log('addItemToCart initiated');
     var itemListInternal = JSON.parse(localStorage.getItem('itemList'));
+    console.log('itemListInternal: ', itemListInternal);
     var cartItems = document.getElementById("cartitemsIDNK");
+    console.log('cartItems: ', cartItems);
     if(itemListInternal == null || itemListInternal.length == 0){
         console.log('On index page hence itemListInternal is null : ',itemListInternal);
     }
@@ -291,13 +265,21 @@ function updateCartTotal() {
  * calls displayOrderSummary() when user clicks on proceed button on address window
  */
 openForm = function openForm() {
-    $("#enclosing").addClass("disable-content");
+    if(itemList == null || itemList.length <= 0){
+        alert("No items in cart for checkout!");
+    }
+    else{
+        $("#enclosing").addClass("disable-content");
     document.getElementById("popupForm").style.opacity = 1;
     document.getElementById("popupForm").style.display = "block";
     document.getElementById("ProceedBtn").addEventListener('click', displayOrderSummary);
+    }
+    
 }
 
 
+/** @ Nikita Kapoor
+ * closes delivery address window */
 closeForm = function closeForm(){
     console.log('We will close and go back to cart');
     document.getElementById("popupForm").style.display = "none";
@@ -307,6 +289,18 @@ closeForm = function closeForm(){
 
 /** @ Nikita Kapoor
  * closes delivery address window when clicked outside */
+document.addEventListener("mouseup", function(event){
+    var container = $("#popupForm");
+    if(container != null || container != undefined){
+        if (!container.is(event.target) && container.has(event.target).length === 0) 
+        {
+            closeForm();
+        }
+    }
+    
+});
+
+
 /*$(document).mouseup(function(event) 
 {
     var container = $("#popupForm");
@@ -440,6 +434,7 @@ function fieldRequiredValidation(name, line1, city, province, postalCode, countr
  */
 resetAddressForm = function resetAddressForm(){
     document.getElementById("personName").value = '';
+    document.getElementById("phone").value = '';
     document.getElementById("line1").value = '';
     document.getElementById("line2").value = '';
     document.getElementById("city").value = '';

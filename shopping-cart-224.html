@@ -30,12 +30,12 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    
     <link rel="stylesheet" href="./css/shopping-cart-224.css" />
     <link rel="stylesheet" href="./css/theme.css" />
   </head>
 
-  <body className="snippet-body">
+  <body className="snippet-body" onload="readyFunc()">
     <div class="card">
       <div id="enclosing">
         <div class="row" id="cartSection">
@@ -127,7 +127,6 @@
               type="tel"
               id="phone"
               placeholder="333-444-5555"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             />
             <span class="require" id="span7"> *</span>
           </div>
@@ -184,13 +183,13 @@
 
           <div id="btnSec">
             <span id="valMsg" class="require"></span><br />
-            <button
+            <!--<button
               type="button"
               class="bton btn-primary btn-radius"
               id="addressToCart"
             >
               Close
-            </button>
+            </button>-->
             <button
               type="button"
               class="bton btn-primary btn-radius"
