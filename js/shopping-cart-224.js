@@ -1,9 +1,4 @@
-// $(function () {
-// });
 
-/*$ = function(element_id){
-    return document.getElementById(element_id);
-}*/
 
 if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
@@ -274,7 +269,7 @@ function updateCartTotal() {
 
 var isPopUpOpen = false;
 openForm = function openForm() {
-    console.log('Hi!! Checkout btn clicked.');
+    // console.log('Hi!! Checkout btn clicked.');
     $("#enclosing").addClass("disable-content");
     document.getElementById("popupForm").style.opacity = 1;
     document.getElementById("popupForm").style.display = "block";
@@ -308,14 +303,14 @@ if(localStorage.getItem('address')){
 }
 
 displayOrderSummary = function displayOrderSummary(){
-    console.log('order summary will display here : ', $("#personName"));
+    // console.log('order summary will display here : ', $("#personName"));
     var name = document.getElementById("personName").value.trim();
     var line1 = document.getElementById("line1").value.trim();
     var line2 = document.getElementById("line2").value.trim();
     var city = document.getElementById("city").value.trim();
     var province = document.getElementById("province").value.trim();
     var country = document.getElementById("country").value.trim();
-    console.log(name,' | ',line1);
+    // console.log(name,' | ',line1);
     address.push({
         name : name, 
         line1 : line1, 
@@ -324,8 +319,11 @@ displayOrderSummary = function displayOrderSummary(){
         province : province,
         country : country
     });
-    console.log('address : ',address);
+
     localStorage.setItem('address', JSON.stringify(address));
+
+      // Navigate to the thank you page
+  window.location.href = 'thankyou.html';
 }
 
 resetAddressForm = function resetAddressForm(){
