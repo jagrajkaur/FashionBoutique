@@ -1,3 +1,10 @@
+/* 
+This contains the html code for the registration function of the website
+Owned and created by Michelle R. Hementera
+C0863836
+ */
+
+
 /* Set the color variables */
 :root {
   --primary-color: #886fb2;
@@ -140,12 +147,12 @@ select option {
 }
 
 /* Set background color for container */
-.privcontainer {
+.priv {
   background-color: #a087c9;
 }
 
 /* Center container horizontally */
-.privcontainer {
+.priv {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -153,7 +160,7 @@ select option {
 }
 
 /* Adjust container size based on browser size */
-.privcontainer {
+.priv {
   width: 80%;
   max-width: 1000px;
   min-width: 500px;
