@@ -55,7 +55,7 @@ form.addEventListener('submit', function(event) {
     localStorage.setItem('formData', jsonData);
 
     // If registration is successful, show a success message and reset the form
-    alert('Registration successful!');
+    window.alert('Fashion: Registration successful!');
     form.reset();
 
     // Redirect the user to the login page
@@ -70,7 +70,7 @@ function validateForm() {
   const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
   if (!email.value.match(emailPattern)) {
     // If email is not in correct format, show an error message and set isValid to false
-    alert('Please enter a valid email address.');
+    showAlert('Please enter a valid email address.');
     isValid = false;
   }
 
@@ -80,18 +80,18 @@ function validateForm() {
   // Check if password meets requirements
   if (!passwordRegex.test(password.value)) {
     // If password does not meet requirements, show an error message and set isValid to false
-    alert('Passwords must be at least 8 characters long and contain at least one number, one special character, and one uppercase letter.');
+    showAlert('Passwords does not comply with standards');
     isValid = false;
   } else if (password.value !== confirmPassword.value) {
     // If passwords do not match, show an error message and set isValid to false
-    alert('Passwords do not match.');
+    showAlert('Passwords do not match.');
     isValid = false;
   }
 
   // Check if privacy policy is checked
   if (!privacyPolicy.checked) {
     // If privacy policy is not checked, show an error message and set isValid to false
-    alert('Please agree to the privacy and cookie policy.');
+    showAlert('Please agree to the privacy and cookie policy.');
     isValid = false;
   }
 

@@ -177,5 +177,5 @@ select option {
 #error-message {
   color: red;
   font-weight: bold;
-  font-size: smaller;
+  font-size: .8em;
 }
