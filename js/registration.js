@@ -13,6 +13,17 @@ const stylePreference = document.getElementById('style-preference');
 const privacyPolicy = document.getElementById('privacy-policy');
 const exclusiveOffers = document.getElementById('exclusive-offers');
 
+function showAlert(message) {
+  const alertBox = document.createElement('div');
+  alertBox.className = 'alert';
+  alertBox.textContent = message;
+  document.getElementById('error-message').appendChild(alertBox);
+  setTimeout(() => {
+    alertBox.remove();
+  }, 3000);
+}
+
+
 form.addEventListener('submit', function(event) {
   // Prevent the default form submission behavior
   event.preventDefault();
@@ -33,7 +44,7 @@ form.addEventListener('submit', function(event) {
     const isEmailRegistered = formDataArray.some(data => data.email === formData.email);
     if (isEmailRegistered) {
       // If email is already registered, show an error message and return
-      alert('This email is already registered. Please use a different email.');
+      showAlert('This email is already registered. Please use a different email.');
       return;
     }
 

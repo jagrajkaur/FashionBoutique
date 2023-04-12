@@ -172,3 +172,10 @@ select option {
   max-width: 1000px;
   min-width: 500px;
 }
+
+
+#error-message {
+  color: red;
+  font-weight: bold;
+  font-size: smaller;
+}
