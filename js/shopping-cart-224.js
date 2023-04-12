@@ -248,8 +248,14 @@ function addItemToCart() {
  * 
  */
 function updateCartTotal() {
+    /**
+     * RK- Get elements by class na,e
+     */
     var cartRows = document.getElementsByClassName('item-price');
     var cartRowsQuantity = document.getElementsByClassName('item-quantity');
+    /**
+     * RK- Get elements by id
+     */
     var cartTotalQuantity = document.getElementById('#total-quantity');
     var cartTotalQuantitySummary = document.getElementById('#total-quantity-summary');
     var cartTotalBasePrice = document.getElementById('#total-base-price');
