@@ -1,4 +1,10 @@
-// Get references to the form elements
+                                                                                  /* 
+                                                                                  This contains the js code for the registration function of the website
+                                                                                  Owned and created by Michelle R. Hementera
+                                                                                  C0863836
+                                                                                  */
+                                                
+// Getting a reference to the HTML form element with its ID then assigning it to a constant variable
 const form = document.getElementById('registration-form');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
@@ -7,7 +13,16 @@ const stylePreference = document.getElementById('style-preference');
 const privacyPolicy = document.getElementById('privacy-policy');
 const exclusiveOffers = document.getElementById('exclusive-offers');
 
-// Add a submit event listener to the form
+function showAlert(message) {
+  const alertBox = document.createElement('div');
+  alertBox.className = 'alert';
+  alertBox.textContent = message;
+  document.getElementById('error-message').appendChild(alertBox);
+  setTimeout(() => {
+    alertBox.remove();
+  }, 3000);
+}
+
 form.addEventListener('submit', function(event) {
   // Prevent the default form submission behavior
   event.preventDefault();
@@ -23,15 +38,20 @@ form.addEventListener('submit', function(event) {
 
     // Save the form data to an array
     const formDataArray = JSON.parse(localStorage.getItem('formData')) || [];
+
+    // Check if email is already registered
+    const isEmailRegistered = formDataArray.some(data => data.email === formData.email);
+    if (isEmailRegistered) {
+      // If email is already registered, show an error message and return
+      showAlert('This email is already registered. Please use a different email.');
+      return;
+    }
+
     formDataArray.push(formData);
 
     // Convert the array to JSON and store it in local storage
     const jsonData = JSON.stringify(formDataArray);
     localStorage.setItem('formData', jsonData);
-
-    // If registration is successful, show a success message and reset the form
-    alert('Registration successful!');
-    form.reset();
 
     // Create a new Blob object with the form data
     const blob = new Blob([jsonData], {type: "text/plain"});
@@ -39,11 +59,21 @@ form.addEventListener('submit', function(event) {
     // Create a URL for the Blob object
     const url = URL.createObjectURL(blob);
 
-/*     // Create a link to allow the user to download the file
+    // Create a link to allow the user to download the file
     const link = document.createElement("a");
-    link.download = "formData.txt";
     link.href = url;
-    link.click(); */
+    link.setAttribute("download", "formData.txt");
+    link.style.display = "none";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // If registration is successful, show a success message and reset the form
+    window.alert('Fashion: Registration successful!');
+    form.reset();
+
+    // Redirect the user to the login page
+    window.location.href = "login.html";
   }
 });
 
@@ -54,7 +84,7 @@ function validateForm() {
   const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
   if (!email.value.match(emailPattern)) {
     // If email is not in correct format, show an error message and set isValid to false
-    alert('Please enter a valid email address.');
+    showAlert('Please enter a valid email address.');
     isValid = false;
   }
 
@@ -64,21 +94,18 @@ function validateForm() {
   // Check if password meets requirements
   if (!passwordRegex.test(password.value)) {
     // If password does not meet requirements, show an error message and set isValid to false
-    alert('Passwords must be at least 8 characters long and contain at least one number, one special character, and one uppercase letter.');
+    showAlert('Passwords does not comply with standards');
     isValid = false;
   } else if (password.value !== confirmPassword.value) {
     // If passwords do not match, show an error message and set isValid to false
-    alert('Passwords do not match.');
+    showAlert('Passwords do not match.');
     isValid = false;
   }
-
-
-
 
   // Check if privacy policy is checked
   if (!privacyPolicy.checked) {
     // If privacy policy is not checked, show an error message and set isValid to false
-    alert('Please agree to the privacy and cookie policy.');
+    showAlert('Please agree to the privacy and cookie policy.');
     isValid = false;
   }
 
@@ -87,4 +114,4 @@ function validateForm() {
 }
 
 const formDataArray = JSON.parse(localStorage.getItem('formData')) || [];
-console.log(formDataArray);
+//console.log(formDataArray);    /* enable this to allow validation. For security, this is disabled */

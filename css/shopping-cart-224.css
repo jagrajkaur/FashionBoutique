@@ -77,6 +77,7 @@ a{
 .remove-items{
     margin-left: auto;
     font-size: 0.7rem;
+    cursor: pointer;
 }
 img{
     width: 3.5rem;
@@ -223,7 +224,7 @@ label{
 
 .disable-content{
     pointer-events: none;
-    opacity: 0.2;
+    /*opacity: 0.2; NK - animation in JS*/
 }
 
 h2{
