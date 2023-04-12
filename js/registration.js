@@ -1,8 +1,8 @@
-/* 
-This contains the js code for the registration function of the website
-Owned and created by Michelle R. Hementera
-C0863836
- */
+                                                                                  /* 
+                                                                                  This contains the js code for the registration function of the website
+                                                                                  Owned and created by Michelle R. Hementera
+                                                                                  C0863836
+                                                                                  */
 
 // Get references to the form elements
 const form = document.getElementById('registration-form');
@@ -52,8 +52,6 @@ form.addEventListener('submit', function(event) {
   }
 });
 
-
-
 function validateForm() {
   let isValid = true;
 
@@ -78,9 +76,6 @@ function validateForm() {
     alert('Passwords do not match.');
     isValid = false;
   }
-
-
-
 
   // Check if privacy policy is checked
   if (!privacyPolicy.checked) {
