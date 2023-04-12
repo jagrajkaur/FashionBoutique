@@ -111,4 +111,4 @@ function validateForm() {
 }
 
 const formDataArray = JSON.parse(localStorage.getItem('formData')) || [];
-console.log(formDataArray);
+//console.log(formDataArray);    /* enable this to allow validation. For security, this is disabled */
