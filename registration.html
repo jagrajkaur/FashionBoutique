@@ -20,11 +20,34 @@
     <link rel="stylesheet" href="./css/category-section.css">
     <link rel="stylesheet" href="./css/trending-section.css">
     <link rel="stylesheet" href="./css/footer.css">    
-    <script src="./js/header.js"></script>   
+    <!-- <script src="./js/header.js"></script>    -->
   </head>
 
   <body>
-    <header></header>
+    <header>
+      <nav>  
+          <!-- START :: LOGO SECTION -->
+          <div>
+              <a href="#"><img src="./images/logo.png" class="logo-img" alt="FaSHCO"></a>
+          </div>
+          <!-- END :: LOGO SECTION -->
+
+          <!-- START :: ACTION BUTTONS -->
+          <div>
+              <a href="#contact"><button class="btn btn-text">Contact</button></a>
+              <a href="./login.html">
+                  <button class="btn btn-outlined">Log in</button>
+              </a>
+              <!-- Rajwant Kaur Add shopping cart button in top right corner -->
+                  <a href="./shopping-cart-224.html">
+
+                  <button class="btn btn-text" id="shopCart">Cart </button>
+              </a>
+          </div>
+          <!-- END :: MENU OPTIONS -->
+      </nav>
+  </header>
+
     <div class="container d-flex d-flex-col ">
       <h1>Registration Form</h1>
       <form id="registration-form" method="post" class="center">
