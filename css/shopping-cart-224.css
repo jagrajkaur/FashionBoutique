@@ -223,7 +223,7 @@ label{
 
 .disable-content{
     pointer-events: none;
-    opacity: 0.2;
+    /*opacity: 0.2; NK - animation in JS*/
 }
 
 h2{

@@ -315,8 +315,8 @@ openForm = function openForm() {
     }
     else {
         $("#enclosing").addClass("disable-content");
-        document.getElementById("popupForm").style.opacity = 1;
-        document.getElementById("popupForm").style.display = "block";
+        $("#enclosing").fadeTo(600, 0.2);
+        $("#popupForm").show(800);
         document.getElementById("ProceedBtn").addEventListener('click', displayOrderSummary);
     }
 
@@ -327,7 +327,8 @@ openForm = function openForm() {
  * closes delivery address window */
 closeForm = function closeForm() {
     console.log('We will close and go back to cart');
-    document.getElementById("popupForm").style.display = "none";
+    $("#popupForm").hide(800);
+    $("#enclosing").fadeTo(800, 1);
     $("#enclosing").removeClass("disable-content");
 }
 
@@ -461,8 +462,8 @@ function fieldRequiredValidation(name, line1, city, province, postalCode, countr
         }
 
 
-        if (/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(phone) != true || phone.length > 100) {
-            msg += "Enter correct phone format - 123 456 7891 or 123-456-7891. ";
+        if (/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(phone) != true) {
+            msg += "Enter 10 digit phone or in format - 123 456 7891, 123.456.7891, 123-456-7891. ";
 
         }
 
