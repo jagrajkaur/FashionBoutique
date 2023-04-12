@@ -148,10 +148,9 @@ select option {
 
 /*center the privacy container both vertically and horizontally, and make it take up the full height of the viewport*/
 .privcontainer {
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
-  height: 100vh;
+  max-width: 800px;
+  text-align: justify;
+  margin: 2in auto;
 }
 
 /* Set background color for container */
