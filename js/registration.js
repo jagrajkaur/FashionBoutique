@@ -34,7 +34,7 @@ form.addEventListener('submit', function(event) {
     // Convert the array to JSON and store it in local storage
     const jsonData = JSON.stringify(formDataArray);
     localStorage.setItem('formData', jsonData);
-
+    
     // If registration is successful, show a success message and reset the form
     alert('Registration successful!');
     form.reset();

@@ -80,6 +80,10 @@ form.addEventListener("submit", function(event) {
   successSection.innerHTML = "";
   successSection.appendChild(successMsg);
 
+  setTimeout(function() {
+    window.location.href = "index.html";
+  }, 3000);
+  
   // clear fields when successful
   document.getElementById("email").value = "";
   document.getElementById("password").value = "";
