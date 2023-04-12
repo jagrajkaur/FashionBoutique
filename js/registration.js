@@ -1,8 +1,17 @@
 /* 
-This contains the html code for the registration function of the website
+This contains the js code for the registration function of the website
 Owned and created by Michelle R. Hementera
 C0863836
  */
+
+// Get references to the form elements
+const form = document.getElementById('registration-form');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const confirmPassword = document.getElementById('confirm-password');
+const stylePreference = document.getElementById('style-preference');
+const privacyPolicy = document.getElementById('privacy-policy');
+const exclusiveOffers = document.getElementById('exclusive-offers');
 
 // Add a submit event listener to the form
 form.addEventListener('submit', function(event) {
@@ -18,16 +27,8 @@ form.addEventListener('submit', function(event) {
       exclusiveOffers: exclusiveOffers.checked,
     };
 
-    // Check if email is already in formDataArray
+    // Save the form data to an array
     const formDataArray = JSON.parse(localStorage.getItem('formData')) || [];
-    const existingUser = formDataArray.find(user => user.email === formData.email);
-    if (existingUser) {
-      // If email is already in formDataArray, show an error message and return
-      alert('Email address already in use.');
-      return;
-    }
-
-    // Add formData to formDataArray
     formDataArray.push(formData);
 
     // Convert the array to JSON and store it in local storage
@@ -47,14 +48,13 @@ form.addEventListener('submit', function(event) {
     // Create a URL for the Blob object
     const url = URL.createObjectURL(blob);
 
-    // Create a link to allow the user to download the file
+/*     // Create a link to allow the user to download the file
     const link = document.createElement("a");
     link.download = "formData.txt";
     link.href = url;
-    link.click();
+    link.click(); */
   }
 });
-
 
 function validateForm() {
   let isValid = true;
