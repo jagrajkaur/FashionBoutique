@@ -38,6 +38,9 @@ form.addEventListener('submit', function(event) {
     // If registration is successful, show a success message and reset the form
     alert('Registration successful!');
     form.reset();
+    
+    // Redirect the user to the login page
+    window.location.href = "login.html";
 
     // Create a new Blob object with the form data
     const blob = new Blob([jsonData], {type: "text/plain"});
