@@ -164,7 +164,7 @@ function addToCartClicked(event) {
     var shopItem = button.parentElement.parentElement.parentElement;
     var title = shopItem.getElementsByClassName('subhead-2')[0].innerText;
     if (itemListName.includes(title)) {
-        alert("Item alrady added to cart.\nPlease change quantity form Cart page.");
+        alert("Item already added to cart.\nPlease change quantity form Cart page.");
     }
     else {
         var price = shopItem.getElementsByClassName('final-price')[0].innerText;
@@ -221,6 +221,8 @@ function addItemToCart() {
                                 </div>
                                 <div class="col">
                                     <span class="item-price text-muted">${itemListInternal[i].price}</span>
+                                </div>
+                                <div>
                                     <span class="remove-items text-muted">&#10005;</span>
                                 </div>
                             </div>`;
