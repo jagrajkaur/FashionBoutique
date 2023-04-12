@@ -61,9 +61,12 @@ form.addEventListener('submit', function(event) {
 
     // Create a link to allow the user to download the file
     const link = document.createElement("a");
-    link.download = "formData.txt";
     link.href = url;
-    link.click(); 
+    link.setAttribute("download", "formData.txt");
+    link.style.display = "none";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 
     // If registration is successful, show a success message and reset the form
     window.alert('Fashion: Registration successful!');
