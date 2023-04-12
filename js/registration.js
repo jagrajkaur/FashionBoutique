@@ -3,8 +3,8 @@
                                                                                   Owned and created by Michelle R. Hementera
                                                                                   C0863836
                                                                                   */
-
-// Get references to the form elements
+                                                
+// Getting a reference to the HTML form element with its ID then assigning it to a constant variable
 const form = document.getElementById('registration-form');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
@@ -22,7 +22,6 @@ function showAlert(message) {
     alertBox.remove();
   }, 3000);
 }
-
 
 form.addEventListener('submit', function(event) {
   // Prevent the default form submission behavior
@@ -53,6 +52,18 @@ form.addEventListener('submit', function(event) {
     // Convert the array to JSON and store it in local storage
     const jsonData = JSON.stringify(formDataArray);
     localStorage.setItem('formData', jsonData);
+
+    // Create a new Blob object with the form data
+    const blob = new Blob([jsonData], {type: "text/plain"});
+
+    // Create a URL for the Blob object
+    const url = URL.createObjectURL(blob);
+
+    // Create a link to allow the user to download the file
+    const link = document.createElement("a");
+    link.download = "formData.txt";
+    link.href = url;
+    link.click(); 
 
     // If registration is successful, show a success message and reset the form
     window.alert('Fashion: Registration successful!');
