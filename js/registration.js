@@ -13,7 +13,6 @@ const stylePreference = document.getElementById('style-preference');
 const privacyPolicy = document.getElementById('privacy-policy');
 const exclusiveOffers = document.getElementById('exclusive-offers');
 
-// Add a submit event listener to the form
 form.addEventListener('submit', function(event) {
   // Prevent the default form submission behavior
   event.preventDefault();
@@ -41,20 +40,9 @@ form.addEventListener('submit', function(event) {
 
     // Redirect the user to the login page
     window.location.href = "login.html";
-
-    // Create a new Blob object with the form data
-    const blob = new Blob([jsonData], {type: "text/plain"});
-
-    // Create a URL for the Blob object
-    const url = URL.createObjectURL(blob);
-
-/*     // Create a link to allow the user to download the file
-    const link = document.createElement("a");
-    link.download = "formData.txt";
-    link.href = url;
-    link.click(); */
   }
 });
+
 
 function validateForm() {
   let isValid = true;
