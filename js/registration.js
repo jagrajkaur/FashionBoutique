@@ -28,6 +28,15 @@ form.addEventListener('submit', function(event) {
 
     // Save the form data to an array
     const formDataArray = JSON.parse(localStorage.getItem('formData')) || [];
+
+    // Check if email is already registered
+    const isEmailRegistered = formDataArray.some(data => data.email === formData.email);
+    if (isEmailRegistered) {
+      // If email is already registered, show an error message and return
+      alert('This email is already registered. Please use a different email.');
+      return;
+    }
+
     formDataArray.push(formData);
 
     // Convert the array to JSON and store it in local storage
@@ -42,6 +51,7 @@ form.addEventListener('submit', function(event) {
     window.location.href = "login.html";
   }
 });
+
 
 
 function validateForm() {
