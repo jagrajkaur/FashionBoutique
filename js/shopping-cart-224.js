@@ -46,7 +46,7 @@ function readyFunc() {
                 setItemQuantityInLocalStorage(title, quantity);  //NK -update quantity in local storage (so that latest quantity is fetched when user revists)
             } else {
                 /**
-                 * User can not reduce quantity less than 1. 
+                 * Rajwant Kaur, User can not reduce quantity less than 1. 
                  * They can click cross button to remove item completely.
                  */
                 alert("1 is the minimum quantity.");
