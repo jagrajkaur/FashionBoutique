@@ -83,6 +83,36 @@
     opacity: 1;
 }
 
+
+/* For product card popup */
+.product-card-popup {
+    display: none;
+    position: fixed;
+    left: 28.5%;
+    top: 13.5%;
+    height: 30em;
+    width: 50em;
+    text-align: center;
+    border: 3px solid #999999;
+    background-color: #e1daee;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent;
+}
+
+#popup-image-id{
+    margin: 2em;
+}
+
+#popup-content-id{
+    margin: 2em;
+    margin-top: 3em;
+    align-content: left;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
 @media only screen and (min-width: 1200px) {
     .category-section{
         padding-top: 10em;
