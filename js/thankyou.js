@@ -17,8 +17,8 @@ if (document.readyState == 'loading') {
  * @returns 
  */
 function generateTrackingId() {
-  var currentDate = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-  var randomString = Math.random().toString(36).substring(2, 8);
+  var currentDate = new Date().toISOString().slice(0, 10).replace(/-/g, ""); // RK_ Get current date and get onyl date values then remove - to get string in format YYYYMMDD
+  var randomString = Math.random().toString(36).substring(2, 8); //Rk- Generate a random string
   return currentDate + randomString;
 }
 
