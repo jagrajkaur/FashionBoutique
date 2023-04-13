@@ -791,6 +791,7 @@ function openProductCardPopup(viewButton) {
 
     productDetailsHTML = productDetailsHTML.outerHTML; // Insert product card HTML into the popup
     var popUpHTML = `
+        <h3 class="subhead-1">Product Details</h3>
         <div class="row d-flex">
             <div class="col-3" id="popup-image-id">`+productDetailsHTML+`</div>
             <div class="col-6" id="popup-content-id"> 
