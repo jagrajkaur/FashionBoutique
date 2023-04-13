@@ -241,6 +241,16 @@ function addItemToCart() {
     }
 }
 
+/**
+ * @ Rajwant Kaur- Update total price on shipping mode change
+ */
+if ($('#shipping-mode')) {
+    $('#shipping-mode').on('change', function () {
+        //Rk- Update cart total on shipping mode change.
+        updateCartTotal();
+    });
+}
+
 
 /**
  * Rajwant Kaur- Update over all price,
