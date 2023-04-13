@@ -141,14 +141,14 @@ const getProductCardHTML = function(productDetails){
 
             <div class="pl-1em pb-1em">
                 <p class="label">
-                    <span class="text-strike-light">${productDetails.price}</span>
+                    <span class="text-strike-light normal-price">${productDetails.price}</span>
                     <span class="final-price">${productDetails.finalPrice}</span>
                 </p>
                 <div class="d-flex">
                     <button class="scale-down-half btn btn-primary btn-add-to-cart">Buy Now</button>
-                    <button class="scale-down-half btn btn-icon filled-on-hover">
+                    <button class="scale-down-half btn btn-icon filled-on-hover" onclick="openProductCardPopup(this);">
                         <span class="material-symbols-rounded color-pink">
-                            favorite
+                            visibility
                         </span>
                     </button>
                 </div>
@@ -776,3 +776,40 @@ var women_product_tshirts = function(){
 
     $('sub_product-images').innerHTML = women_tshirts_images;
 }
+
+// Get the product card popup elements
+var productCardPopup = $("productCardPopup");
+var productCardPopupContent = $("productCardPopupContent");
+var productCardPopupClose = $("productCardPopupClose");
+
+/* Function to open the product card popup with product details */
+function openProductCardPopup(viewButton) {
+    var productDetailsHTML = viewButton.parentElement.parentElement.parentElement.parentElement;
+    var title = productDetailsHTML.getElementsByClassName('subhead-2')[0].innerText;
+    var normalPrice = productDetailsHTML.getElementsByClassName('normal-price')[0].innerText;
+    var finalPrice = productDetailsHTML.getElementsByClassName('final-price')[0].innerText;
+
+    productDetailsHTML = productDetailsHTML.outerHTML; // Insert product card HTML into the popup
+    var popUpHTML = `
+        <h3 class="subhead-1">Product Details</h3>
+        <div class="row d-flex">
+            <div class="col-3" id="popup-image-id">`+productDetailsHTML+`</div>
+            <div class="col-6" id="popup-content-id"> 
+                <h2>Product Name : `+title+` </h2><br>
+                <h2>Product Price : `+normalPrice+` </h2><br>
+                <h2>Discounted Price : `+finalPrice+` </h2>
+            </div>
+        </div>
+    `;
+
+    productCardPopupContent.innerHTML = popUpHTML;
+    productCardPopup.style.display = "block"; // Show the popup
+}
+
+/* Function to close the product card popup */
+function closeProductCardPopup() {
+    productCardPopup.style.display = "none"; // Hide the popup
+}
+
+/* Add event listener to the product card popup close button */
+productCardPopupClose.addEventListener("click", closeProductCardPopup);

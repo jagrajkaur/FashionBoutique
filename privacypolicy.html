@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+                                                                                                <!--
+                                                                                                This contains the html code for the registration function of the website
+                                                                                                Created by Michelle R. Hementera
+                                                                                                C0863836
+                                                                                                -->
     <title>Privacy Policy</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <link rel="stylesheet" href="./css/registration.css">
     <link rel="stylesheet" href="./css/nav.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,14 +19,35 @@
     <link rel="stylesheet" href="./css/feature-section.css">
     <link rel="stylesheet" href="./css/category-section.css">
     <link rel="stylesheet" href="./css/trending-section.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    
-    <script src="../js/header.js"></script>
-
+    <link rel="stylesheet" href="./css/footer.css">   
+    <!-- <script src="../js/header.js"></script> -->
 </head>
 <body>
-    <header></header>
-    <!-- <div class="priv"> -->
+    <header>
+        <nav>  
+            <!-- START :: LOGO SECTION -->
+            <div>
+                <a href="index.html"><img src="./images/logo.png" class="logo-img" alt="FaSHCO"></a>
+            </div>
+            <!-- END :: LOGO SECTION -->
+
+            <!-- START :: ACTION BUTTONS -->
+            <div>
+                <a href="index.html" class="btn btn-text"> Home </a
+                <a href="#contact"><button class="btn btn-text">Contact</button></a>
+                <a href="./login.html">
+                    <button class="btn btn-outlined">Log in</button>
+                </a>
+                <!-- Rajwant Kaur Add shopping cart button in top right corner -->
+                    <a href="./shopping-cart-224.html">
+
+                    <button class="btn btn-text" id="shopCart">Cart </button>
+                </a>
+            </div>
+            <!-- END :: MENU OPTIONS -->
+        </nav>
+    </header>
+    <div class="privcontainer">
     <h1>Introduction and Overview</h1>
     <p>This Privacy Policy ("Policy") explains how your personal information is collected when you access this website 
         or use other services provided by Webpage 2 Project, including any written, electronic, or oral communications, 
@@ -33,7 +58,7 @@
         pages, features, or content owned and operated by Webpage 2 Project.</p>
     <p>Webpage 2 Project is the controller of your personal data, and is responsible for processing and protecting 
         your personal data. In this Policy, the terms “Webpage 2 Project,” “Company,” “we,” “us,” and “our” refer to Webpage 2 Project.</p>
-    <p>Please read our <a href="terms-and-conditions.html">Terms and Conditions</a> and this Policy before accessing or using our Services. 
+    <p>Please read our Terms and Conditions and this Policy before accessing or using our Services. 
         If you do not agree with this Policy or the Terms and Conditions, please do not access or use our Services. 
         By using our Services, you accept the Terms and Conditions and Privacy Policy on the site you are using.</p>
     <p>Webpage 2 Project may change this Policy from time to time, to reflect how we are collecting, processing 
@@ -82,12 +107,10 @@
                                 </select>
                             </div>
                         </div>
-                        
                         <div class="d-flex">
                             <div class="col-2 mt-1em"><label for="subject">Subject: </label></div>
                             <div class="col-10"><textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea></div>
                         </div>
-
                         <div class="d-flex">
                             <div class="col-2 mt-1em"></div>
                             <div class="col-10"><button class="btn btn-primary">Submit</button></div>
@@ -96,14 +119,12 @@
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <p>copyright &copy;2022 <a href="#">fashion boutique</a></p>
             <div class="footer-menu">
                 <ul class="f-menu">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#category">Category</a></li>
-                    <li><a href="#trending">Trending</a></li>
+                    <li><a href="index.html">Home</a></li>
+
                 </ul>
             </div>
         </div>
