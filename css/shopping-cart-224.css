@@ -77,6 +77,7 @@ a{
 .remove-items{
     margin-left: auto;
     font-size: 0.7rem;
+    cursor: pointer;
 }
 img{
     width: 3.5rem;
@@ -101,18 +102,7 @@ select{
     width: 100%;
     background-color: rgb(247, 247, 247);
 }
-/* input{
-    border: 1px solid rgba(0, 0, 0, 0.137);
-    padding: 1vh;
-    margin-bottom: 4vh;
-    outline: none;
-    width: 100%;
-    background-color: rgb(247, 247, 247);
-}
-input:focus::-webkit-input-placeholder
-{
-      color:transparent;
-} */
+
 .btn{
     border: none;
     color: #fff;
@@ -234,7 +224,7 @@ label{
 
 .disable-content{
     pointer-events: none;
-    opacity: 0.2;
+    /*opacity: 0.2; NK - animation in JS*/
 }
 
 h2{

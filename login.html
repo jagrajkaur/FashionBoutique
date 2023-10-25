@@ -33,12 +33,12 @@
                  
                     <div class="form-group">
 
-                        <label for="username">User Name:*</label>
-                        <input type="text" id="username" name="username" class="form-control" placeholder="User name" autofocus>
+                        <label for="email">Email:*</label>
+                        <input type="text" id="email" name="email" class="form-control" placeholder="Email" autofocus>
                     </div>
                     <div class="form-group">
-                        <label for="pass">Password:*</label>
-                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Password">
+                        <label for="password">Password:*</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password">
                     </div>
 
                     <div class="form-group">
@@ -50,117 +50,38 @@
                     </div>
 
                     <div class="form-group">
+                        <!-- <button onclick="login()" type="submit" id="submit" name="submit" class="btn btn-primary">Login</button> -->
                         <button type="submit" id="submit" name="submit" class="btn btn-primary">Login</button>
+
                     </div>
+                      
+                    <div class="signup-link">
+                        Don't have an account? <a href="registration.html">Register now!</a>
+                      </div>
+              
                 </form>
                 <div id="success-section"></div>
             </div>                
         </div>
     </main>
-    <footer>
-      
-            <div class="footer-bottom">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <p>&copy; 2023 Fashion Paradise</p>
-                        </div>
-                        <div class="col-md-4">
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><a href="#">Home</a></li>
-                                <li class="list-inline-item"><a href="#category">Category</a></li>
-                                <li class="list-inline-item"><a href="#trending">Trending</a></li>
-                                <li class="list-inline-item"><a href="#">About Us</a></li>
-                                <li class="list-inline-item"><a href="#">Contact Us</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <ul class="list-inline social-buttons">
-                                <li class="list-inline-item">
-                                    <a href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-       
-    </footer>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("username").value = "";
-            document.getElementById("pass").value = "";
-        });
-    </script>
-    
+    <footer> 
+
+    <div class="footer-bottom">
+        <p>copyright &copy;2022 <a href="#">fashion boutique</a></p>
+        <div class="footer-menu">
+            <ul class="f-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#category">Category</a></li>
+                <li><a href="#trending">Trending</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+    <script
+      type="text/javascript"
+      src="./js/login.js"></script>
+
     </body>
 </html>
 
-
-<script>
-    const form = document.getElementById("member_form");
-    form.addEventListener("submit", function(event) {
-      event.preventDefault(); 
-    
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("pass").value;
-    
-      if (!username || !password) { // check if fields are empty
-        alert("Please enter both username and password.");
-        return;
-      }
-    
-      // validate username length
-      const uNameLength = username.length >= 4 ;
-      if (!uNameLength) {
-        alert("Invalid username. Too short. Usernames contain at least 4 characters.");
-        return;
-      }
-    
-      //validate password
-      const pwCheck = /^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
-      if (!pwCheck.test(password)) {
-        alert("Password must be 8-15 characters and contain at least 1 special character.");
-        return;
-      }
-    
-      //sample User
-      const loggedInUser = username;
-      const loggedInUserType = "user";
-    
-      // show success message
-      const successMsg = document.createElement("div");
-      successMsg.className = "alert alert-success mt-4";
-      successMsg.role = "alert";
-      successMsg.innerHTML = `Welcome, ${loggedInUser}!`;
-    
-      const successSection = document.getElementById("success-section");
-      successSection.innerHTML = "";
-      successSection.appendChild(successMsg);
-    
-    if (loggedInUserType === "admin") {
-  const adminPanel = document.createElement("div");
-  adminPanel.className = "show mt-3";
-  adminPanel.innerHTML = "Admin panel content";
-
-  successSection.appendChild(adminPanel);
-}
-    
-      // clear form fields
-      document.getElementById("username").value = "";
-      document.getElementById("pass").value = "";
-    });
-    </script>
-    

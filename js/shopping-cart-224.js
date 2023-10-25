@@ -1,38 +1,27 @@
-// $(function () {
-// });
+function readyFunc() {
 
-/*$ = function(element_id){
-    return document.getElementById(element_id);
-}*/
-
-if (document.readyState == 'loading') {
-    document.addEventListener('DOMContentLoaded', ready)
-} else {
-    ready();
-}
-
-
-window.onload = function(){
-    document.getElementById('checkoutBtn') != null ? document.getElementById('checkoutBtn').onclick = openForm : "";
-    document.getElementById('addressToCart') != null ? document.getElementById('addressToCart').onclick = closeForm : "";
-    document.getElementById('resetAddress') != null ? document.getElementById('resetAddress').onclick = resetAddressForm : "";
-    
-}
-
-
-function ready() {
-
-    //NK - Load cart contents in cart page
     addItemToCart();
 
+    document.getElementById('checkoutBtn') != null ? document.getElementById('checkoutBtn').onclick = openForm : "";
+    //document.getElementById('addressToCart') != null ? document.getElementById('addressToCart').onclick = closeForm : "";
+    document.getElementById('resetAddress') != null ? document.getElementById('resetAddress').onclick = resetAddressForm : "";
+
+    //NK - Load cart contents in cart page
+
+    /**
+     * Rajwant Kaur remove items from cart from cross button click.
+     */
     var removeItems = document.getElementsByClassName('remove-items');
     for (var i = 0; i < removeItems.length; i++) {
         var removeItemButton = removeItems[i];
         removeItemButton.addEventListener('click', function (event) {
             var buttonClicked = event.target;
-            buttonClicked.parentElement.parentElement.parentElement.remove(); //remove item from screen
-            var title = buttonClicked.parentElement.parentElement.getElementsByClassName('item-title')[0].innerText; 
+            buttonClicked.parentElement.parentElement.parentElement.remove(); //Rajwant Kaur- remove item from screen
+            var title = buttonClicked.parentElement.parentElement.getElementsByClassName('item-title')[0].innerText;
             removeItemFromStorage(title); //NK - remove item from local storage, so that user sees latest items list
+            /**
+             * Rajwant Kaur- Update cart overall summary based on the user actions.
+             */
             updateCartTotal();
         });
 
@@ -42,7 +31,7 @@ function ready() {
     var addQuantity = document.getElementsByClassName('add-quantity');
 
     /**
-     * Reduce quantity
+     * Rajwant Kaur Reduce quantity if user click on subtraction button
      */
     for (var i = 0; i < removeQuantity.length; i++) {
         var removeQuantityButton = removeQuantity[i];
@@ -53,28 +42,38 @@ function ready() {
             var title = buttonClicked.parentElement.parentElement.getElementsByClassName('item-title')[0].innerText;
             if (quantity > 1) {
                 quantity -= 1;
-                quantityElement.innerText = quantity;  //update the quantity on screen
+                quantityElement.innerText = quantity;  //RK- update the quantity on screen
                 setItemQuantityInLocalStorage(title, quantity);  //NK -update quantity in local storage (so that latest quantity is fetched when user revists)
             } else {
+                /**
+                 * Rajwant Kaur, User can not reduce quantity less than 1. 
+                 * They can click cross button to remove item completely.
+                 */
                 alert("1 is the minimum quantity.");
             }
+            /**
+             * Rajwant Kaur, Update total amount of cart
+             */
             updateCartTotal();
         });
 
 
         /**
-         * Delivery mode
+         * Rajwant kaur Delivery mode
          */
         var deliveryMode = document.getElementById('shipping-mode');
         console.log("delivery mode is", deliveryMode);
         deliveryMode.addEventListener('click', function (event) {
+            /**
+             * Rajwant Kaur  Update cart total based on delivery mode.
+             */
             updateCartTotal();
         });
 
     }
     /**
-     * Increase quantity
-     */
+      * Rajwant Kaur Increase quantity if user click on addition button
+      */
     for (var i = 0; i < addQuantity.length; i++) {
         var addQuantityButton = addQuantity[i];
         addQuantityButton.addEventListener('click', function (event) {
@@ -83,8 +82,11 @@ function ready() {
             var quantity = parseInt(quantityElement.innerText);
             var title = buttonClicked.parentElement.parentElement.getElementsByClassName('item-title')[0].innerText;
             quantity += 1;
-            quantityElement.innerText = quantity; //update the quantity on screen
+            quantityElement.innerText = quantity; //RK- update the quantity on screen
             setItemQuantityInLocalStorage(title, quantity);  //NK - update quantity in local storage (so that latest quantity is fetched when user revists)
+            /**
+             * Rajwant Kaur- Update cart total for increase in quantity
+             */
             updateCartTotal();
         });
 
@@ -104,7 +106,7 @@ function ready() {
 * Global list common between index and cart page, also maintained in local storage.
 * Used to contorl items being added to cart and display on cart page*/
 var itemList = [];
-if(localStorage.getItem('itemList')){
+if (localStorage.getItem('itemList')) {
     itemList = JSON.parse(localStorage.getItem('itemList'));
 }
 
@@ -113,7 +115,7 @@ if(localStorage.getItem('itemList')){
  * Supporting list to maintain the title list of items in cart
 */
 var itemListName = [];
-for(i = 0; i < itemList.length; i++){
+for (i = 0; i < itemList.length; i++) {
     itemListName.push(itemList[i].title);
 }
 
@@ -122,9 +124,9 @@ for(i = 0; i < itemList.length; i++){
  * Serches the title in current itemList and sets quantity to the specified value in localStorage
  * Used in increasing or decreasing the value of an item in cart
 */
-function setItemQuantityInLocalStorage(title, qty){   
-    for(i = 0; i < itemList.length; i++){
-        if(itemList[i].title == title){
+function setItemQuantityInLocalStorage(title, qty) {
+    for (i = 0; i < itemList.length; i++) {
+        if (itemList[i].title == title) {
             itemList[i].quantity = qty;
             break;
         }
@@ -136,15 +138,15 @@ function setItemQuantityInLocalStorage(title, qty){
 /**@ Nikita Kapoor - removeItemFromStorage(title)
  * Serches the title in current itemList and removes that item from localStorage
 */
-function removeItemFromStorage(title){
-    for(i = 0; i < itemList.length; i++){
-        if(itemList[i].title == title){
-            itemList.splice(i,1);
+function removeItemFromStorage(title) {
+    for (i = 0; i < itemList.length; i++) {
+        if (itemList[i].title == title) {
+            itemList.splice(i, 1);
         }
     }
-    for(i = 0; i < itemListName; i++){
-        if(itemListName[i] == title){
-            itemListName.splice(i,1);
+    for (i = 0; i < itemListName; i++) {
+        if (itemListName[i] == title) {
+            itemListName.splice(i, 1);
         }
     }
     localStorage.setItem('itemList', JSON.stringify(itemList));
@@ -155,23 +157,24 @@ function removeItemFromStorage(title){
  * event handler for Buy Now buttons on index.html page
  * adds item to itemList, hence item added will be displayed in cart
 */
-console.log('itemListName 1 : ',itemListName);
-function addToCartClicked(event){
+console.log('itemListName 1 : ', itemListName);
+function addToCartClicked(event) {
+    console.log('This is being clicked!!!!');
     var button = event.target;
     var shopItem = button.parentElement.parentElement.parentElement;
     var title = shopItem.getElementsByClassName('subhead-2')[0].innerText;
-    if(itemListName.includes(title)){
-        alert("Item alrady added to cart.\nPlease change quantity form Cart page.");
+    if (itemListName.includes(title)) {
+        alert("Item already added to cart.\nPlease change quantity form Cart page.");
     }
-    else{
+    else {
         var price = shopItem.getElementsByClassName('final-price')[0].innerText;
         var imageSrc = shopItem.parentElement.getElementsByClassName('image-icon')[0].src;
         itemList.push({
-                title : title, 
-                price : price, 
-                imageSrc : imageSrc,
-                quantity : 1
-            });
+            title: title,
+            price: price,
+            imageSrc: imageSrc,
+            quantity: 1
+        });
         localStorage.setItem('itemList', JSON.stringify(itemList));
         itemListName.push(title);
         alert("Item added to cart!");
@@ -185,14 +188,17 @@ function addToCartClicked(event){
  * funtion to populate the contents of page shopping-cart-224.html
  * dynamic rows created based on itemList content
 */
-function addItemToCart(){
+function addItemToCart() {
+    console.log('addItemToCart initiated');
     var itemListInternal = JSON.parse(localStorage.getItem('itemList'));
+    console.log('itemListInternal: ', itemListInternal);
     var cartItems = document.getElementById("cartitemsIDNK");
-    if(itemListInternal == null || itemListInternal.length == 0){
-        console.log('On index page hence itemListInternal is null : ',itemListInternal);
+    console.log('cartItems: ', cartItems);
+    if (itemListInternal == null || itemListInternal.length == 0) {
+        console.log('On index page hence itemListInternal is null : ', itemListInternal);
     }
-    else{
-        for(i = 0; i < itemListInternal.length; i++){
+    else {
+        for (i = 0; i < itemListInternal.length; i++) {
             var cartRow = document.createElement('div')
             cartRow.classList.add('row');
             cartRow.classList.add('border-top');
@@ -215,28 +221,53 @@ function addItemToCart(){
                                 </div>
                                 <div class="col">
                                     <span class="item-price text-muted">${itemListInternal[i].price}</span>
+                                </div>
+                                <div>
                                     <span class="remove-items text-muted">&#10005;</span>
                                 </div>
                             </div>`;
             cartRow.innerHTML = cartRowContent;
-            if(cartItems){
+            if (cartItems) {
                 cartItems.append(cartRow);
             }
         }
-        
+
     }
     var cartTotalQuantity = document.getElementById('#total-quantity');
-    if(cartTotalQuantity == null || cartTotalQuantity == undefined || cartTotalQuantity == ''){
-        console.log('On index page hence cartTotalQuantity is null : ',cartTotalQuantity);
-    }else{
+    if (cartTotalQuantity == null || cartTotalQuantity == undefined || cartTotalQuantity == '') {
+        console.log('On index page hence cartTotalQuantity is null : ', cartTotalQuantity);
+    } else {
         updateCartTotal();
     }
 }
 
+/**
+ * @ Rajwant Kaur- Update total price on shipping mode change
+ */
+if ($('#shipping-mode')) {
+    $('#shipping-mode').on('change', function () {
+        //Rk- Update cart total on shipping mode change.
+        updateCartTotal();
+    });
+}
 
+
+/**
+ * Rajwant Kaur- Update over all price,
+ * automatic taxes calculations based on price
+ * Delivery price calculation
+ * Number of items update.
+ * 
+ */
 function updateCartTotal() {
+    /**
+     * RK- Get elements by class na,e
+     */
     var cartRows = document.getElementsByClassName('item-price');
     var cartRowsQuantity = document.getElementsByClassName('item-quantity');
+    /**
+     * RK- Get elements by id
+     */
     var cartTotalQuantity = document.getElementById('#total-quantity');
     var cartTotalQuantitySummary = document.getElementById('#total-quantity-summary');
     var cartTotalBasePrice = document.getElementById('#total-base-price');
@@ -255,19 +286,32 @@ function updateCartTotal() {
         quantityTotal += intQuantity;
 
     }
-    tax = ((total *13/100 )).toFixed(2);
+    /**
+     * Rajwant Kaur- Calculate 13% standard taxes
+     */
+    tax = ((total * 13 / 100)).toFixed(2);
 
     cartTotalQuantity.innerText = quantityTotal + " items ";
     cartTotalQuantitySummary.innerText = 'ITEMS   ' + quantityTotal;
-    cartTotalBasePrice.innerText = '$ ' + total.toFixed(2);
+    cartTotalBasePrice.innerText = '$ ' + total.toFixed(2); // Rajwant Kaur- Floating points upto 2 decimal points
     taxElement.innerText = '$ ' + tax;
-    if (quantityTotal == 0) {
 
+    /**
+     * Rajwant Kaur- Display No items message if quantity is zero.
+     */
+    if (quantityTotal == 0) {
+        const cartItemsEl = document.getElementById('cartitemsIDNK');
+        cartItemsEl.innerText = 'No Items available in your cart';
+        cartItemsEl.style.fontSize = '24px';
+        cartItemsEl.style.textAlign = 'center';
     }
 
+    /**
+     * Rajwant Kaur- Floating points upto 2 decimal points
+     */
     var totalBasePrice = total.toFixed(2);
     var shippingPrice = parseInt($("#shipping-mode").val());
-    var totalPrice = parseFloat(parseFloat(totalBasePrice) +parseFloat( shippingPrice )+ parseFloat(tax)).toFixed(2);
+    var totalPrice = parseFloat(parseFloat(totalBasePrice) + parseFloat(shippingPrice) + parseFloat(tax)).toFixed(2);
     cartTotalPrice.innerText = '$ ' + totalPrice;
 
 }
@@ -278,35 +322,46 @@ function updateCartTotal() {
  * calls displayOrderSummary() when user clicks on proceed button on address window
  */
 openForm = function openForm() {
-    $("#enclosing").addClass("disable-content");
-    document.getElementById("popupForm").style.opacity = 1;
-    document.getElementById("popupForm").style.display = "block";
-    document.getElementById("ProceedBtn").addEventListener('click', displayOrderSummary);
+    if (itemList == null || itemList.length <= 0) {
+        alert("No items in cart for checkout!");
+    }
+    else {
+        $("#enclosing").addClass("disable-content");
+        $("#enclosing").fadeTo(600, 0.2);
+        $("#popupForm").show(800);
+        document.getElementById("ProceedBtn").addEventListener('click', displayOrderSummary);
+    }
+
 }
 
 
-closeForm = function closeForm(){
+/** @ Nikita Kapoor
+ * closes delivery address window */
+closeForm = function closeForm() {
     console.log('We will close and go back to cart');
-    document.getElementById("popupForm").style.display = "none";
+    $("#popupForm").hide(800);
+    $("#enclosing").fadeTo(800, 1);
     $("#enclosing").removeClass("disable-content");
 }
 
 
 /** @ Nikita Kapoor
  * closes delivery address window when clicked outside */
-$(document).mouseup(function(event) 
-{
+document.addEventListener("mouseup", function (event) {
     var container = $("#popupForm");
-    if (!container.is(event.target) && container.has(event.target).length === 0) 
-    {
-        closeForm();
+    if (container != null || container != undefined) {
+        if (!container.is(event.target) && container.has(event.target).length === 0) {
+            closeForm();
+        }
     }
+
 });
+
 
 
 //NK - global variable to store and fetch delivery addres to/from localstorage
 var address = [];
-if(localStorage.getItem('address')){
+if (localStorage.getItem('address')) {
     address = JSON.parse(localStorage.getItem('address'));
 }
 
@@ -314,7 +369,7 @@ if(localStorage.getItem('address')){
 /**  @ Nikita Kapoor
  * validate the address entered and store in local storage
  * call fieldRequiredValidation() to perform actal validations on input fields*/
-displayOrderSummary = function displayOrderSummary(){
+displayOrderSummary = function displayOrderSummary() {
     console.log('order summary will display here : ', $("#personName"));
     var name = document.getElementById("personName").value.trim();
     var line1 = document.getElementById("line1").value.trim();
@@ -324,24 +379,32 @@ displayOrderSummary = function displayOrderSummary(){
     var postalCode = document.getElementById("postalCode").value.trim();
     var country = document.getElementById("country").value.trim();
     var phone = document.getElementById("phone").value.trim();
-    console.log(name,' | ',line1);
+    console.log(name, ' | ', line1);
     var allValid = fieldRequiredValidation(name, line1, city, province, postalCode, country, phone);
-    console.log('allValid : '+allValid);
-    if(allValid == true){
+    console.log('allValid : ' + allValid);
+    if (allValid == true) {
         address = {
-            name : name, 
-            line1 : line1, 
-            line2 : line2,
-            city : city,
-            province : province,
-            postalCode : postalCode,
-            country : country
+            name: name,
+            line1: line1,
+            line2: line2,
+            city: city,
+            province: province,
+            postalCode: postalCode,
+            country: country
         };
-        console.log('address : ',address);
+        console.log('address : ', address);
         localStorage.setItem('address', JSON.stringify(address));
+        /**
+         * Rajwant Kaur- Redirect on thank you page, once user confirmed its  address.
+         */
+        if (confirm("Please confirm all of your details are correct")) {// Rajwant Kaur- Confirmation popup for address details
+            window.location.href = 'thankyou.html'; //  Rajwant Kaur - Display Thankyou page once address is confirmed.
+            localStorage.removeItem("itemList"); //Rajwant Kaur- Remove purchased items list from local storage
+
+        }
     }
-    else{
-       console.log('Some validation failed. Check with Admin');
+    else {
+        console.log('Some validation failed. Check with Admin');
     }
 }
 
@@ -350,74 +413,79 @@ displayOrderSummary = function displayOrderSummary(){
  * fieldRequiredValidation() perfoems various checks on values enter in input fields
  * displays appropriate messages for correction
  */
-function fieldRequiredValidation(name, line1, city, province, postalCode, country, phone){
+function fieldRequiredValidation(name, line1, city, province, postalCode, country, phone) {
     console.log('Inside validation');
     var reqfield = [];
-    if(name == "" || name == null){
+    if (name == "" || name == null) {
         reqfield.push("personName");
     }
-    if(phone == "" || phone == null){
+    if (phone == "" || phone == null) {
         reqfield.push("phone");
     }
-    if(line1 == "" || line1 == null){
+    if (line1 == "" || line1 == null) {
         reqfield.push("line1");
     }
-    if(city == "" || city == null){
+    if (city == "" || city == null) {
         reqfield.push("city");
     }
-    if(province == "" || province == null){
+    if (province == "" || province == null) {
         reqfield.push("province");
     }
-    if(postalCode == "" || postalCode == null){
+    if (postalCode == "" || postalCode == null) {
         reqfield.push("postalCode");
     }
-    if(country == "" || country == null){
+    if (country == "" || country == null) {
         reqfield.push("country");
     }
-    console.log("reqfield : ",reqfield);
-    if(reqfield.length > 0){
+    console.log("reqfield : ", reqfield);
+    if (reqfield.length > 0) {
         var msg = "Please enter Required Fields:\n";
-        for(i = 0; i < reqfield.length; i++){
-            msg += "-  "+reqfield[i]+"\n";
+        for (i = 0; i < reqfield.length; i++) {
+            msg += "-  " + reqfield[i] + "\n";
         }
         confirm(msg);
-    }else{
+    } else {
         console.log("return true");
         var msg = '';
 
         // province code check
-        if(/^[A-Z]{1,2}$/.test(province) != true ){
+        if (/^[A-Z]{1,2}$/.test(province) != true) {
             msg += "Please enter only 2 uppercase letters in Provice Code. ";
         }
 
         //postal code check
-        if(/[A-Z]{1}\d[A-Z]{1}\d[A-Z]{1}\d$/.test(postalCode) != true ){
-           msg += "Please enter 6 letter postal code in format A2B3C1. ";
+        if (/[A-Z]{1}\d[A-Z]{1}\d[A-Z]{1}\d$/.test(postalCode) != true) {
+            msg += "Please enter 6 letter postal code in format A2B3C1. ";
         }
 
         //name character length check
-        if(/^[a-z\s\.']+$/i.test(name) != true || name.length > 100 ){
+        if (/^[a-z\s\.']+$/i.test(name) != true || name.length > 100) {
             msg += "Max 100 characters containing only letters, . and ' are allowed in Name. ";
         }
 
         //City character length check
-        if(/^[a-zA-Z]*$/.test(city) != true || city.length > 100 ){
+        if (/^[a-zA-Z]*$/.test(city) != true || city.length > 100) {
             msg += "Max 100 characters and only alphabets are allowed for City. ";
         }
 
         //Country character length check
-        if(/^[a-zA-Z]*$/.test(country) != true || country.length > 100 ){
+        if (/^[a-zA-Z]*$/.test(country) != true || country.length > 100) {
             msg += "Max 100 characters and only alphabets are allowed for Country. ";
         }
 
 
-        if(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(phone) != true || phone.length > 100 ){
-            msg += "Enter correct phone format - 123 456 7891 or 123-456-7891. ";
+        if (/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(phone) != true) {
+            msg += "Enter 10 digit phone or in format - 123 456 7891, 123.456.7891, 123-456-7891. ";
+
         }
-        
+
 
         document.getElementById("valMsg").innerHTML = msg;
-        return true;
+        // RK- Return true only if msg is true
+        if (msg == '') {
+            return true;
+        }
+        return false;
     }
 }
 
@@ -425,8 +493,9 @@ function fieldRequiredValidation(name, line1, city, province, postalCode, countr
 /** @ Nikita Kapoor
  * Clear all the fields of delivery address
  */
-resetAddressForm = function resetAddressForm(){
+resetAddressForm = function resetAddressForm() {
     document.getElementById("personName").value = '';
+    document.getElementById("phone").value = '';
     document.getElementById("line1").value = '';
     document.getElementById("line2").value = '';
     document.getElementById("city").value = '';

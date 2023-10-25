@@ -1,51 +1,59 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
-<head>
-  <!--
+  <head>
+    <!--
             This is shopping cart of website
             @author Rajwant Kaur
-            @date 21 March 2023
+            @date 21 March 2023- Added styling, all dynamic calculations, 
+                  -add items, remove items, 
+                  -change quantity,
+                  - calculate total pice
+                  -Taxes,delivery calculations summary
 
             @ Nikita Kapoor(NK) - Added logic for adding items from index page to the cart 
                                     - linking between pages index.html and shopping-cart-224.html
                                 - removed static content, static page content updated to dynamic, dynamic items and cost calculation
                                 - Empty Cart Logic
+                                - Added animation for delivery address popup
         -->
-  <title>Fashion Paradise</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fashion Paradise</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link rel="stylesheet" href="./css/typography.css" />
-  <link rel="stylesheet" href="./css/nav.css" />
-  <link rel="stylesheet" href="./css/theme.css" />
-  <link rel="stylesheet" href="./css/feature-section.css" />
-  <link rel="stylesheet" href="./css/category-section.css" />
-  <link rel="stylesheet" href="./css/trending-section.css" />
-  <link rel="stylesheet" href="./css/footer.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./css/typography.css" />
+    <link rel="stylesheet" href="./css/nav.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/feature-section.css" />
+    <link rel="stylesheet" href="./css/category-section.css" />
+    <link rel="stylesheet" href="./css/trending-section.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
     <link rel="stylesheet" href="./css/shopping-cart-224.css" />
     <link rel="stylesheet" href="./css/theme.css" />
   </head>
 
-  <body className="snippet-body">
+  <body className="snippet-body" onload="readyFunc()">
+    <nav>
+      <!-- START :: LOGO SECTION -->
+      <div>
+          <a href="./index.html"><img src="./images/logo.png" class="logo-img" alt="FaSHCO"></a>
+      </div>
+  </nav>
     <div class="card">
       <div id="enclosing">
         <div class="row" id="cartSection">
           <div class="col-md-8 cart">
             <div class="title">
               <div class="row">
-                <div class="col">
+                <div class="col text-muted">
                   <h4><b>Your Bucket</b></h4>
                 </div>
                 <div
@@ -56,11 +64,13 @@
                 </div>
               </div>
             </div>
-            <div class="cart-items" id="cartitemsIDNK"></div>
+            <div class="cart-items text-muted" id="cartitemsIDNK"></div>
             <div class="back-to-shop">
               <a href="./index.html"
                 >&leftarrow;<span class="text-muted"
-                  ><button class="btn-primary btn-radius">Back to shop</button></span
+                  ><button class="btn-primary btn-radius">
+                    Back to shop
+                  </button></span
                 ></a
               >
             </div>
@@ -72,147 +82,153 @@
             <hr />
 
             <div class="row">
-              <div class="col text-muted">
-                <h4><b>Your Bucket</b></h4>
+              <div
+                class="col"
+                style="padding-left: 0"
+                id="#total-quantity-summary"
+              >
+                ITEMS 0
               </div>
-              <div class="col align-self-center text-right text-muted" id="#total-quantity">
-                0 items
-              </div>
+              <div class="col text-right" id="#total-base-price">$ 00.00</div>
             </div>
-          </div>
-          <div class="cart-items" id="cartitemsIDNK"></div>
-          <div class="back-to-shop">
-            <a href="./index.html"><span class="text-muted"><button class="btn btn-text">Back to
-                  shop</button></span></a>
-          </div>
-        </div>
-        <div class="col-md-4 summary">
-          <div>
-            <h5 class="subhead-2 text-white"><b>Summary</b></h5>
-          </div>
-          <hr />
-          <div class="row">
-            <div class="col text-white" style="padding-left: 0" id="#total-quantity-summary">
-              ITEMS 0
+            <div class="row">
+              <div class="col" style="padding-left: 0">Taxes Standard 13%</div>
+              <div class="col text-right" id="#taxes"></div>
             </div>
-
-            <button class="btn-primary btn btn-radius" id="checkoutBtn">CHECKOUT</button>
-
-            <div class="col text-right text-white" id="#total-base-price">$ 00.00</div>
-
+            <form>
+              <p>Choose Your Delivery Mode</p>
+              <select id="shipping-mode">
+                <option class="text-muted" value="10">
+                  Standard-Delivery- $10.00
+                </option>
+                <option class="text-muted" value="15">
+                  Express-Delivery- $15.00
+                </option>
+              </select>
+             
+            </form>
+            <div
+              class="row"
+              style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0"
+            >
+              <div class="col">TOTAL PRICE</div>
+              <div class="col text-right" id="#total-price">$ 00.00</div>
+            </div>
+            <button class="btn-primary btn btn-radius" id="checkoutBtn">
+              CHECKOUT
+            </button>
           </div>
-          <div class="row text-white">
-            <div class="col" style="padding-left: 0">Taxes Standard 13%</div>
-            <div class="col text-right" id="#taxes"></div>
-          </div>
-          <form class="text-white">
-            <p>Choose Your Delivery Mode</p>
-            <select id="shipping-mode">
-              <option class="text-muted" value="10">
-                Standard-Delivery- $10.00
-              </option>
-              <option class="text-muted" value="15">
-                Express-Delivery- $15.00
-              </option>
-            </select>
-            <p>Do you have any Promotional Code?</p>
-            <input id="promoCode" placeholder="Enter your code" />
-          </form>
-          <div class="row text-white" style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0">
-            <div class="col">TOTAL PRICE</div>
-            <div class="col text-right" id="#total-price">$ 00.00</div>
-          </div>
-          <button class="btn" id="checkoutBtn">CHECKOUT</button>
         </div>
       </div>
     </div>
 
-      <div class="loginPopup" id="addressSection">
-        <div class="formPopup" id="popupForm">
-          <form action="" class="formContainer">
-            <h2>Delivery Address</h2>
-            <div class="box">
-              <label for="personName"> Full Name </label>
-              <input type="text" id="personName" placeholder="You name here" />
-              <span class="require" id="span1"> *</span>
-            </div>
-            <div class="box">
-              <label for="phone"> Phone </label>
-              <input type="tel" id="phone" placeholder="333-444-5555" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
-              <span class="require" id="span7"> *</span>
-            </div>
-            <div class="box">
-              <label for="line1"> Line 1 </label>
-              <input
-                type="text"
-                id="line1"
-                placeholder="House/ Apartment/ Unit #"
-                name="line1"
-              />
-              <span class="require" id="span2"> *</span>
-            </div>
-            <div class="box">
-              <label for="line2"> Line 2 </label>
-              <input
-                type="text"
-                id="line2"
-                placeholder="Building/ Street"
-                name="line2"
-              />
-            </div>
-            <div class="box">
-              <label for="city"> City </label>
-              <input type="text" id="city" placeholder="City" name="city" />
-              <span class="require" id="span3"> *</span>
-            </div>
-            <div class="box">
-              <label for="province"> Province Code </label>
-              <input
-                type="text"
-                id="province"
-                placeholder="Province"
-                name="Province"
-              />
-              <span class="require" id="span4"> *</span>
-            </div>
-            <div class="box">
-              <label for="postalCode">Postal Code</label>
-              <input
-                type="text"
-                id="postalCode"
-                placeholder="Postal Code"
-                name="country"
-              />
-              <span class="require" id="span5"> *</span>
-            </div>
+    <div class="loginPopup" id="addressSection">
+      <div class="formPopup" id="popupForm">
+        <form action="" class="formContainer">
+          <h2>Delivery Address</h2>
+          <div class="box">
+            <label for="personName"> Full Name </label>
+            <input type="text" id="personName" placeholder="You name here" />
+            <span class="require" id="span1"> *</span>
+          </div>
+          <div class="box">
+            <label for="phone"> Phone </label>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="333-444-5555"
+            />
+            <span class="require" id="span7"> *</span>
+          </div>
+          <div class="box">
+            <label for="line1"> Line 1 </label>
+            <input
+              type="text"
+              id="line1"
+              placeholder="House/ Apartment/ Unit #"
+              name="line1"
+            />
+            <span class="require" id="span2"> *</span>
+          </div>
+          <div class="box">
+            <label for="line2"> Line 2 </label>
+            <input
+              type="text"
+              id="line2"
+              placeholder="Building/ Street"
+              name="line2"
+            />
+          </div>
+          <div class="box">
+            <label for="city"> City </label>
+            <input type="text" id="city" placeholder="City" name="city" />
+            <span class="require" id="span3"> *</span>
+          </div>
+          <div class="box">
+            <label for="province"> Province Code </label>
+            <input
+              type="text"
+              id="province"
+              placeholder="Province"
+              name="Province"
+            />
+            <span class="require" id="span4"> *</span>
+          </div>
+          <div class="box">
+            <label for="postalCode">Postal Code</label>
+            <input
+              type="text"
+              id="postalCode"
+              placeholder="Postal Code"
+              name="country"
+            />
+            <span class="require" id="span5"> *</span>
+          </div>
 
-            <div class="box">
-              <label for="country"> Country </label>
-              <input type="text" id="country" value="Canada" name="country" />
-              <span class="require" id="span6"> *</span>
-            </div>
-            
-            <div id="btnSec">
-              <span id="valMsg" class="require"></span><br/>
-              <button type="button" class="bton btn-primary btn-radius" id="resetAddress">
-                Clear
-              </button>
-              <button type="button" class="bton btn-primary btn-radius" id="ProceedBtn">
-                Confirm
-              </button>
-            </div>
-          </form>
-        </div>
+          <div class="box">
+            <label for="country"> Country </label>
+            <input type="text" id="country" value="Canada" name="country" />
+            <span class="require" id="span6"> *</span>
+          </div>
 
+          <div id="btnSec">
+            <span id="valMsg" class="require"></span><br />
+            <!--<button
+              type="button"
+              class="bton btn-primary btn-radius"
+              id="addressToCart"
+            >
+              Close
+            </button>-->
+            <button
+              type="button"
+              class="bton btn-primary btn-radius"
+              id="resetAddress"
+            >
+              Clear
+            </button>
+            <button
+              type="button"
+              class="bton btn-primary btn-radius"
+              id="ProceedBtn"
+            >
+              Confirm
+            </button>
+          </div>
+        </form>
       </div>
     </div>
-  </div>
 
-  <script type="text/javascript"
-    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+    ></script>
 
-  <!-- Here async will load script  file in background. -->
-  <script type="text/javascript" src="./js/shopping-cart-224.js" async></script>
-</body>
-
+    <!-- Rajwant Kaur Here async will load script  file in background. -->
+    <script
+      type="text/javascript"
+      src="./js/shopping-cart-224.js"
+      async
+    ></script>
+  </body>
 </html>
